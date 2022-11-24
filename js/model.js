@@ -471,7 +471,7 @@ model.admin = async () => {
                         .collection("User")
                         .doc(arrId[i])
                         .get()
-                    console.log(userMess.data());
+                    console.log(userMess);
                     arrUserName.push({
                         username: userMess.data().userInfor.Username,
                         email: arrId[i]
