@@ -471,6 +471,7 @@ model.admin = async () => {
                         .collection("User")
                         .doc(arrId[i])
                         .get()
+                    console.log(userMess.data());
                     arrUserName.push({
                         username: userMess.data().userInfor.Username,
                         email: arrId[i]
@@ -629,7 +630,7 @@ model.getMessMiss = async () => {
                 messNotify.style.display = "block";
             }
         }
-        
+
     }
 }
 model.changePass = async (data) => {
