@@ -366,7 +366,7 @@ component.inforForm = `
                                 <ion-icon class="imgUpImg" name="camera-reverse-outline"></ion-icon>
                             </div>
                         </div>
-                        <p class="UsName">dzking</p>
+                        <p class="UsName" id="UsName"></p>
                     </div>
                     <div class="infor" id="infor">
                         Tên khách hàng: <br> <input id="nameReceive" type="text" readonly value=""></input> <br>

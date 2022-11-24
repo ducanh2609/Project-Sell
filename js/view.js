@@ -18,7 +18,6 @@ view.setScreenActive = (screenName) => {
             });
 
             let iconRegister = document.getElementById("icon")
-            console.log(iconRegister);
             iconRegister.addEventListener("click", () => {
                 view.showPassword(password, icon);
             })
@@ -28,9 +27,7 @@ view.setScreenActive = (screenName) => {
             })
 
             let iconConfirm = document.getElementById("iconClose");
-            console.log(iconConfirm);
             iconConfirm.addEventListener("click", () => {
-                console.log("111");
                 view.showPassword(confirmPassword, iconClose);
             })
 
@@ -44,7 +41,6 @@ view.setScreenActive = (screenName) => {
             });
             break;
         case "loginPage":
-            console.log("page 111");
             document.getElementById("app").innerHTML = component.loginPage;
             model.checkCheckbox();
             let loginForm = document.getElementById("loginForm");
@@ -516,17 +512,13 @@ view.acount = async () => {
                 .collection("User")
                 .doc(auth.currentUser.email)
                 .get()
-            // if (loginName != null) {
             loginName.innerHTML = response.data().userInfor.Username;
-            // }
-            console.log(signOut);
             information.addEventListener("click", () => {
                 view.setScreenActive("informationUser");
                 productList.setAttribute("style", "display:none");
             })
             // if (signOut != null) {
             signOut.addEventListener("click", () => {
-                console.log("111");
                 let confirmSignOut = confirm("Bạn có muốn thoát phiên đăng nhập hiện tại");
                 if (confirmSignOut) {
                     firebase.auth().signOut();
@@ -544,7 +536,6 @@ view.acount = async () => {
             // }
         } else {
             let a = new Promise((resolve, reject) => {
-                console.log(tabUl);
                 tabUl.innerHTML = `
                         <button class="signIn" id="signIn">Đăng nhập</button>
                         `;
@@ -552,7 +543,6 @@ view.acount = async () => {
             })
             a.then((data) => {
                 data.addEventListener("click", () => {
-                    console.log("111");
                     view.setScreenActive("loginPage");
                 });
             })
@@ -563,7 +553,6 @@ view.acount = async () => {
     })
 }
 view.showPassword = (password, icon) => {
-    console.log(icon);
     if (password.type == "password") {
         password.type = "text";
         icon.classList.remove("fa-eye");
@@ -576,7 +565,6 @@ view.showPassword = (password, icon) => {
 }
 
 view.chatInput = (username, email) => {
-    console.log(username);
     mesBoxContent.innerHTML += `
                     <div class="currentUser" id="currentUser">
                         <p>${chatInput.value}</p>
@@ -630,7 +618,4 @@ view.changePass = () => {
 view.boxAnimation = () => {
     boxAnimation.innerHTML = component.boxAnimation;
     boxAnimation1.innerHTML = component.boxAnimation;
-    console.log(boxAnimation);
-    console.log(boxAnimation1);
-
 }

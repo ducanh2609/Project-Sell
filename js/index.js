@@ -36,7 +36,6 @@ window.onload = () => {
                                 }
                             }
                             miss++
-                            console.log(miss);
                             localStorage.setItem("miss", miss);
                         }
                     }

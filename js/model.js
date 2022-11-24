@@ -167,7 +167,6 @@ model.productClickded = async () => {
 // Tính tổng tiền mỗi sp
 
 model.eachPrice = () => {
-    console.log("111");
     let productPriceTotal = document.getElementsByClassName("col-price-total");
     let productCount = document.getElementsByClassName("count");
     let productPrice = document.getElementsByClassName("col-price");
@@ -269,19 +268,16 @@ model.forgotPass = async (data) => {
 
 //--> Sửa lại vs admin
 model.chatSave = async (data, username, email) => {
-    console.log(data, username);
     try {
         if (username == undefined) {
             let response = await firebase.firestore()
                 .collection("messSave")
                 .doc(auth.currentUser.email)
                 .get()
-            console.log(response.data());
             let responseUser = await db.collection("User")
                 .doc(auth.currentUser.email)
                 .get()
             let username = responseUser.data().userInfor.Username;
-            console.log(responseUser.data().userInfor);
             let responseAdmin = await db.collection("AdminMessSave")
                 .doc(responseUser.data().userInfor.Email)
                 .get()
@@ -315,7 +311,6 @@ model.chatSave = async (data, username, email) => {
                 .collection("AdminMessSave")
                 .doc(email)
                 .get()
-            console.log(response.data());
             if (response.data() == undefined) {
                 await firebase.firestore()
                     .collection("AdminMessSave")
@@ -352,7 +347,6 @@ model.getChatSave = async () => {
         if (response.data() != undefined) {
             let data = response.data().admin;
             let result = "";
-            console.log(111);
             for (let i = 0; i < data.length; i++) {
                 if (firebase.auth().currentUser.email == data[i].owner) {
                     result += `
@@ -383,7 +377,6 @@ model.getChatSave = async () => {
 }
 
 model.search = async (data) => {
-    console.log(data);
     let response = await firebase.firestore()
         .collection("Product")
         .doc("ComputerList")
@@ -394,17 +387,14 @@ model.search = async (data) => {
     }, [])
     let index = [];
     nameProArr.filter((item, i) => {
-        console.log(item.indexOf(data));
         if (item.indexOf(data) != -1) {
             index.push(i);
         }
     }, [])
-    console.log(index);
     let result = "";
     for (let i = 0; i < index.length; i++) {
         for (let j = 0; j < productArr.length; j++) {
             if (j == index[i]) {
-                console.log(productArr[j]);
                 result += `
                         <div class="computer-items ${productArr[j].Id}">
                             <div>
@@ -463,7 +453,6 @@ model.admin = async () => {
             let arrId = id.map((item) => {
                 return item.id
             })
-            console.log(arrId);
             let arrUserName = [];
             for (let i in arrId) {
                 if (arrId[i] != "ducanh@gmail.com") {
@@ -471,14 +460,12 @@ model.admin = async () => {
                         .collection("User")
                         .doc(arrId[i])
                         .get()
-                    console.log(userMess);
                     arrUserName.push({
                         username: userMess.data().userInfor.Username,
                         email: arrId[i]
                     });
                 }
             }
-            console.log(arrUserName);
             let result = "";
             for (let i in arrUserName) {
                 result += `
@@ -494,13 +481,11 @@ model.admin = async () => {
                 }
             })
             let userAccount = document.getElementsByClassName("userAccount");
-            console.log(userAccount);
             for (let i = 0; i < userAccount.length; i++) {
                 userAccount[i].addEventListener("click", () => {
                     let username = arrUserName[i].username;
                     currentChatName = username;
                     currentChatEmail = arrUserName[i].email;
-                    console.log(currentChatEmail);
                     chatbox.setAttribute("style", "display:block");
                     mesBoxheader.innerHTML = `
                                 <b>${arrUserName[i].username}</b>
@@ -512,7 +497,6 @@ model.admin = async () => {
                             time: new Date(),
                             messMiss: 0
                         }
-                        console.log(lastTime.time);
                         chatbox.setAttribute("style", "display:none");
                     })
                     model.getChatAdmin(username, currentChatEmail);
@@ -530,7 +514,6 @@ model.admin = async () => {
             boxClose.addEventListener("click", () => {
                 lastTime = new Date();
                 miss = 0;
-                console.log(lastTime.getTime());
                 localStorage.setItem("lastTime", lastTime.getTime());
                 localStorage.setItem("miss", miss);
                 chatbox.setAttribute("style", "display:none");
@@ -575,7 +558,6 @@ model.messWaiting = async (email) => {
         .collection("AdminMessSave")
         .doc(email)
         .onSnapshot((data) => {
-            console.log(data.data());
             if (auth.currentUser.email != "ducanh@gmail.com" && data.data() != undefined) {
                 if (data.data().messWait != "" && data.data().messWait != undefined) {
                     mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
@@ -587,12 +569,10 @@ model.messWaiting = async (email) => {
         })
 };
 model.messWaitingAdmin = async (email) => {
-    console.log(email);
     await firebase.firestore()
         .collection("messSave")
         .doc(email)
         .onSnapshot((data) => {
-            console.log(data.data());
             if (auth.currentUser.email == "ducanh@gmail.com") {
                 if (data.data().messWait != "" && data.data().messWait != undefined) {
                     mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
@@ -608,7 +588,6 @@ model.getMessMiss = async () => {
         .collection("messSave")
         .doc(auth.currentUser.email)
         .get()
-    // console.log(response.data().admin);
     if (response.data() != undefined) {
         let arrMess = response.data().admin;
         let sum = 0;
@@ -616,7 +595,6 @@ model.getMessMiss = async () => {
             for (let i = 0; i < arrMess.length; i++) {
                 let lastTime = JSON.parse(localStorage.getItem("lastTime"));
                 let time = new Date(arrMess[i].createdAt);
-                console.log(time);
                 if (lastTime != undefined) {
                     if (time.getTime() > lastTime) {
                         sum += 1;
@@ -634,13 +612,10 @@ model.getMessMiss = async () => {
     }
 }
 model.changePass = async (data) => {
-    console.log(data);
     let user = firebase.auth().currentUser;
-    console.log(data.newPassword);
     await firebase.auth()
         .signInWithEmailAndPassword(user.email, data.oldPassword)
         .then((data1) => {
-            console.log(data1);
             firebase.auth().currentUser.updatePassword(data.newPassword)
                 .then(async () => {
                     changePassword.style.display = "none";
@@ -661,7 +636,17 @@ model.changePass = async (data) => {
                 });
         })
 }
-model.inforForm = () => {
+model.inforForm = async () => {
+    let response = await firebase.firestore()
+        .collection("User")
+        .doc(auth.currentUser.email)
+        .get()
+    if (nameReceive.value == undefined) {
+        UsName.innerHTML = response.data().userInfor.Username;
+    } else {
+        console.log(loginName.innerHTML);
+        UsName.innerHTML = nameReceive.value;
+    }
     let url = "https://provinces.open-api.vn/api/?depth=3";
     let Cities = [];
     fetch(url)
@@ -701,7 +686,6 @@ model.inforForm = () => {
                     }
                 }
                 for (let i = 0; i < Cities[id].Districts.length; i++) {
-                    console.log(id);
                     result += `
                     <option class="district">${Cities[id].Districts[i].Name}</option> <br>
                   `
@@ -739,6 +723,12 @@ model.inforFormUpdate = async (data) => {
         .update({
             inforUpdate: data
         })
+    inforBefore.classList.remove("infor-before");
+    inforBefore.classList.add("infor-before-down");
+    infor.style.display = "block";
+    setTimeout(() => {
+        inforBefore.style.display = "none";
+    }, 1500)
     model.getInforUpdate();
 };
 model.getInforUpdate = async () => {
@@ -776,9 +766,10 @@ model.getImgAvatar = async () => {
     let res = await firebase.storage().ref(auth.currentUser.email)
         .child("currentUpload")
         .listAll()
-    let url = await res.items[0].getDownloadURL();
-    console.log(url);
-    imgeUpload.src = `${url}`;
+    if (res.items[0] != undefined) {
+        let url = await res.items[0].getDownloadURL();
+        imgeUpload.src = `${url}`;
+    }
 };
 model.uploadSend = async (file) => {
     uploadSave.addEventListener("click", async () => {
@@ -786,7 +777,6 @@ model.uploadSend = async (file) => {
             .child("currentUpload")
             .listAll()
         if (await res.items[0] != undefined) {
-            console.log(111);
             let url = await res.items[0].getDownloadURL();
             await firebase.storage().refFromURL(url)
                 .delete()
