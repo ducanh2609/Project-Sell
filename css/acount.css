@@ -1,0 +1,93 @@
+.signIn {
+  color: white;
+  line-height: 30px;
+  background-color: #044975;
+  height: 30px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  border: none;
+  border-radius: 10px;
+}
+.signIn:hover {
+  color: red;
+}
+.tabUl {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: fixed;
+  right: 5px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  /* border: 1px solid rgb(0, 4, 255); */
+  /* background-color: yellow; */
+  font-size: 14px;
+  top: 0;
+  width: max-content;
+  box-sizing: border-box;
+  z-index: 500;
+}
+
+.user-icon {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 16px;
+  height: 30px;
+  line-height: 15px;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #044975;
+}
+.user-icon span {
+  color: white;
+}
+ion-icon {
+  color: yellow;
+}
+
+ion-icon:hover {
+  cursor: pointer;
+  color: red;
+}
+
+ion-icon:hover .tabUl {
+  display: block;
+}
+
+.tabUl li {
+  box-sizing: border-box;
+  border: 3px double blue;
+  padding: 0 10px;
+  list-style: none;
+  background-color: yellow;
+  height: 40px;
+  line-height: 35px;
+  display: none;
+  transition: all 0.3s ease-in-out;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.tabUl li:hover {
+    transform: scaleX(1.1) ;
+    border: 1px solid rgb(11, 76, 180);
+    z-index: 1;
+    color: yellow;
+    border-radius: 5px;
+  }
+.tabUl:hover li {
+  display: block;
+}
+
+.tabUl li:hover {
+  cursor: pointer;
+  color: red;
+}
+.tabUl .tab1 {
+  animation: menu1 1 ease-in-out 0.3s forwards;
+  z-index: 501;
+}
+.tabUl .tab2 {
+  animation: menu 1 ease-in-out 0.6s forwards;
+}
+.tabUl .tab3 {
+  animation: menu 1 ease-in-out 0.9s forwards;
+}

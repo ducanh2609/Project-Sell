@@ -1,0 +1,247 @@
+.main1 {
+  background-color: white;
+  /* border: 2px solid yellow; */
+  width: 100%;
+  height: max-content;
+  border-radius: 10px;
+}
+
+.main-menu1 {
+  position: absolute;
+  border: 2px solid blue;
+  border-radius: 0 0 10px 10px;
+  width: 24.8%;
+  height: 500px;
+  overflow: auto;
+  display: none;
+  z-index: 500;
+}
+
+.main-menu1::-webkit-scrollbar {
+  width: 0px;
+  /* Chiều rộng vùng chứa scrollbar */
+}
+
+.main-menu1::-webkit-scrollbar-track {
+  background: none;
+  /* Màu nền ngoài của thanh scrollbar */
+}
+
+.main-menu1::-webkit-scrollbar-thumb {
+  background-color: #ad691a;
+  /* Màu của thanh cuộn (scroll thumb) */
+  border-radius: 20px;
+  /* Bo góc scroll thumb */
+  border: 1px solid #ccc;
+  /* Không hỗ trợ padding, margin, transition nên dùng viền cùng màu nên để padding scroll thumb */
+}
+
+.main-menu1::-webkit-scrollbar-thumb:hover {
+  background-color: #ff8000;
+  /* Hiệu ứng di chuột đổi màu*/
+}
+
+.menu-list1 {
+  border: 1px solid rgb(108, 105, 105);
+  line-height: 40px;
+  background-color: #444;
+  color: rgb(199, 194, 194);
+  padding-left: 5px;
+  text-overflow: ellipsis;
+}
+
+.menu-list1:hover {
+  cursor: pointer;
+  background-color: #1e2021;
+}
+
+.menu-list1 a {
+  position: relative;
+  display: inline-flex;
+  line-height: 40px;
+}
+
+.menu-list1 a > img {
+  position: relative;
+  top: 5px;
+  height: 30px;
+}
+
+.menu-list1:hover {
+  cursor: pointer;
+  background-color: #1e2021;
+}
+
+.main-body {
+  /* position: relative; */
+  width: 100%;
+  /* border: 1px solid yellow; */
+  background-color: rgb(18, 18, 18);
+  padding-bottom: 20px;
+}
+.main-body-header {
+  /* border: 1px solid blue; */
+  min-width: 100%;
+  height: 30px;
+  line-height: 30px;
+  color: white;
+  border-bottom: 2px solid rgb(106, 106, 106);
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.main-body-content {
+  /* border: 1px solid red; */
+  color: white;
+  padding: 0 15px;
+  /* box-sizing: border-box; */
+  min-height: 400px;
+}
+
+.main-title {
+  /* display: inline-block; */
+  font-size: 16px;
+  height: 34px;
+  line-height: 34px;
+}
+
+.main-card-chart {
+  display: flex;
+  justify-content: center;
+}
+
+.chart-line {
+  width: 20%;
+  height: 36px;
+  overflow: hidden;
+  line-height: 72px;
+  border-bottom: 2px solid #444;
+}
+
+.chart {
+  /* border: 2px solid yellow; */
+  padding: 0 auto;
+  box-sizing: border-box;
+}
+
+.step-number {
+  border: 2px solid rgb(106, 106, 106);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  line-height: 72px;
+  text-align: center;
+  font-size: 30px;
+  margin: 0 auto;
+  color: #1071ac;
+}
+
+.step-name {
+  /* border: 2px solid #044975; */
+  margin-top: 20px;
+  text-align: center;
+}
+
+.main-card-table {
+  /* border: 2px solid red; */
+  margin: 30px 0 5px 0;
+  max-height: max-content;
+
+}
+
+.row-header {
+  border: 1px solid rgb(106, 106, 106);
+  background-color: #055b92;
+  display: flex;
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+}
+
+.col-image {
+  width: 10%;
+  box-sizing: border-box;
+  padding-top: 10px;
+}
+
+.col-image img:hover {
+  cursor: pointer;
+  scale: 1.5;
+}
+
+.col-name {
+  /* border:  1px solid red; */
+  width: 25%;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  line-height: 34px;
+}
+
+.col-price {
+  width: 25%;
+}
+
+.col-count {
+  width: 10%;
+}
+
+.col-count input {
+  width: 30%;
+  height: 30%;
+  text-align: center;
+}
+
+.col-price-total {
+  width: 20%;
+}
+
+.col-delete {
+  width: 10%;
+}
+
+.col-delete i:hover {
+  scale: 1.5;
+  cursor: pointer;
+}
+
+.cart-col {
+  border-left: 1px solid white;
+  text-align: center;
+}
+
+.main-price-total {
+  border-top: 2px solid #444;
+  text-align: right;
+  width: 100%;
+}
+
+.main-card-customer {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.main-card-customer button {
+  height: 35px;
+  width: 150px;
+  background-color: #956f07;
+  border-radius: 10px;
+  border: none;
+}
+
+.main-card-customer h3 {
+  color: white;
+}
+
+.main-card-customer button:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to right, orange, red);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  line-height: 20px;
+}

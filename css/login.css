@@ -1,0 +1,53 @@
+.login-container {
+  width: 100%;
+  height: 100vh;
+  background-size: 100% 100%;
+  /* position: relative; */
+  place-items: center;
+}
+
+.login-modal {
+  background-image: url(/Image/login.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  opacity: 65%;
+}
+
+.login-login {
+  height: 500px !important;
+  padding: 70px !important;
+  box-shadow: -20px 10px 30px rgba(10, 35, 226, 0.25),
+    -40px 30px 40px rgba(23, 12, 244, 0.25),
+    inset 5px 5px 30px rgba(19, 12, 223, 0.5),
+    inset 5px 5px 10px rgba(24, 235, 231, 0.2),
+    inset -5px -5px 50px rgba(0, 31, 206, 0.75) !important;
+}
+
+.login-login button {
+  top: 40px;
+}
+
+.okAcount-login {
+  /* border: 2px solid; */
+  color: rgb(19, 2, 105);
+  position: relative;
+  text-align: center;
+  top: 60px;
+}
+
+.okAcount-login div:hover {
+  color: red;
+  cursor: pointer;
+}
+#iconLogin {
+  position: relative;
+  left: -30px;
+  animation: zoomIcon 2s ease-in-out;
+}
+
+#iconLogin:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,31 @@
+.search-content {
+  /* border: 2px solid red; */
+  display: none;
+  z-index: 1100;
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  right: 0;
+  top: 45px;
+  background-color: rgba(52, 133, 220, 0.649);
+  line-height: 45px;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+.search-content .search {
+  height: 90%;
+  border-radius: 10px;
+  min-width: 100px;
+  max-width: 90%;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  transition: all 0.5s ease-in;
+  padding: 0 10px;
+}
+.search-content .search:focus {
+  min-width: 87%;
+  background-color: aqua;
+}
+
+
