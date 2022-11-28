@@ -462,13 +462,13 @@ component.boxAnimation = `
 component.footer = `
             <div class="footer1">
                 <div class="footer-contact">
-                    <p style="text-align: center"><strong>Máy tính Hoàng Hà</strong></p>  <br> <br>
+                    <p style="padding-left: 25px"><strong>Máy tính Hoàng Hà</strong></p>  <br> <br>
                     <p>Số 2 Ngõ 156 Lê Trọng Tấn - Thanh Xuân - Hà Nội</p>  
                     <p>Hotline: 0988 592 692 - 0973 956 316</p>
                     <p>Email: ducanh.nl2@gmail.com</p> 
                 </div>
                 <div class="footer-contact">
-                    <p style="text-align: center"><strong>Hỗ trợ mua hàng online</strong></p> <br> <br>
+                    <p style="padding-left: 40px"><strong>Hỗ trợ mua hàng online</strong></p> <br> <br>
                     <ul>
                         <li>Hỗ trợ mua hàng trực tuyến</li>
                         <li>Các hình thức cạnh tranh</li>
@@ -477,7 +477,7 @@ component.footer = `
                     </ul>
                 </div>
                 <div class="footer-contact">
-                <p style="text-align: center"><strong>Chính sách chung</strong></p> <br> <br>
+                <p style="padding-left: 40px"><strong>Chính sách chung</strong></p> <br> <br>
                     <ul>
                         <li>Chính sách bảo mật thông tin</li>
                         <li>Chính sách bảo hành</li>
