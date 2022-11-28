@@ -123,7 +123,6 @@ model.requesProductQuanlity = async () => {
 
 // Hiện sp đã chọn vào giỏ hàng
 model.productClickded = async () => {
-    console.log("111");
     let response = await firebase.firestore()
         .collection("User")
         .doc(auth.currentUser.email)
@@ -658,7 +657,6 @@ model.getMissAdmin = async (email, userAccountMiss) => {
         .get()
     let userName = userRes.data().userInfor.Username;
     let userMess = response.data()[userName];
-    console.log(userMess);
     let sum = 0;
     let lastTimeAdmin = JSON.parse(localStorage.getItem("lastTimeAdmin"));
     for (let i in lastTimeAdmin) {
@@ -678,7 +676,6 @@ model.getMissAdmin = async (email, userAccountMiss) => {
                 }
             }
         }
-        console.log(sum);
         if (sum == 0) {
             userAccountMiss.style.display = "none";
         } else {
@@ -897,4 +894,34 @@ model.pageDiv = async () => {
             }
         }
     })
+}
+model.purchase = async () => {
+    let response = await firebase.firestore()
+        .collection("User")
+        .doc(auth.currentUser.email)
+        .get()
+    let infor = response.data().inforUpdate;
+    if (response.data().inforUpdate != undefined) {
+        iptName.value = infor.Name;
+        iptEmail.value = infor.Email;
+        iptMobile.value = infor.MobileNumber;
+        iptAddress.value = infor.Address;
+    }
+}
+model.bought = async (data) => {
+    console.log(data);
+    purchaseTab.style.display = "none";
+    let response = await firebase.firestore()
+        .collection("User")
+        .doc(auth.currentUser.email)
+        .update({
+            inforUpdate: {
+                Name: data.Name,
+                Email: data.Email,
+                MobileNumber: data.Mobile,
+                Address: data.Address
+            }
+        })
+    alert("Bạn đã đặt hàng thành công.\nCảm ơn bạn đã tin dùng sản phẩm của chúng tôi!");
+
 }

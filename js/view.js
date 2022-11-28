@@ -95,7 +95,7 @@ view.setScreenActive = (screenName) => {
                 .then((arrid) => {
                     let userAccountMiss = document.getElementsByClassName("userAccountMiss");
                     for (let i in arrid) {
-                        model.getMissAdmin(arrid[i],userAccountMiss[i])
+                        model.getMissAdmin(arrid[i], userAccountMiss[i])
                     }
                 })
             chatInput.addEventListener("keydown", async (event) => {
@@ -267,9 +267,29 @@ view.setScreenActive = (screenName) => {
             logo.addEventListener("click", () => {
                 view.setScreenActive("start");
             })
-            let buyCont = document.getElementById("buyCont");
             buyCont.addEventListener("click", () => {
                 view.setScreenActive("start");
+            })
+            updateCont.addEventListener("click", () => {
+                location.reload();
+            })
+            purchase.addEventListener("click", () => {
+                purchaseTab.style.display = "block";
+                model.purchase();
+            })
+            buyBtn.addEventListener("click", () => {
+                let checkPur = document.getElementsByClassName("checkPur");
+                let buyInfor = {
+                    Name: iptName.value,
+                    Email: iptEmail.value,
+                    Mobile: iptMobile.value,
+                    Address: iptAddress.value,
+                    check: checkPur
+                }
+                controller.purchase(buyInfor);
+            })
+            cancelPurchase.addEventListener("click", () => {
+                purchaseTab.style.display = "none";
             })
             model.productClickded();
             break;

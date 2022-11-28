@@ -131,3 +131,35 @@ controller.inforForm = (data) => {
         model.inforFormUpdate(data);
     }
 }
+controller.purchase = (data) => {
+    if (data.Name == "") {
+        iptName.style["background-color"] = "pink";
+    } else {
+        iptName.style["background-color"] = "rgb(185, 197, 193)";
+    }
+    let vnf_regex = /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
+    if (vnf_regex.test(data.Mobile) == false) {
+        iptMobile.style["background-color"] = "pink";
+    } else {
+        iptMobile.style["background-color"] = "rgb(185, 197, 193)";
+    }
+    if (data.Address == "") {
+        iptAddress.style["background-color"] = "pink";
+    } else {
+        iptAddress.style["background-color"] = "rgb(185, 197, 193)";
+    }
+    let flag = false;
+    for (let i = 0; i < data.check.length; i++) {
+        if (data.check[i].checked == true) {
+            flag = true;
+            break;
+        }
+    }
+    if (flag == false) {
+        alert("Bạn phải chọn 1 phương thức thanh toán")
+    }
+    if (data.Name != "" && vnf_regex.test(data.Mobile) == true && data.Address != "" && flag == true) {
+        console.log(111);
+        model.bought(data);
+    }
+}

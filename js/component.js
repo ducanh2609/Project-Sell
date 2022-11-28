@@ -289,7 +289,10 @@ component.cartHome = `
                                             <h3>TIẾP TỤC MUA</h3>
                                         </button>
                                         <div>
-                                            <button style="background-color:red">
+                                            <button id="updateCont">
+                                                <h3>CẬP NHẬT</h3>
+                                            </button>
+                                            <button id="purchase" style="background-color:red">
                                                 <h3>ĐẶT HÀNG</h3>
                                             </button>
                                         </div>
@@ -297,6 +300,36 @@ component.cartHome = `
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="purchaseTab" id="purchaseTab">
+                <div class="purchContent">
+                    <div class="userPurchase">
+                       <h2>THÔNG TIN KHÁCH HÀNG</h2> <br> <br>
+                       <h4>Tên khách hàng(*):</h4>
+                       <input id="iptName">
+                       <h4>Email:</h4>
+                       <input id="iptEmail">
+                       <h4>Số điện thoại(*):</h4>
+                       <input id="iptMobile">
+                       <h4>Địa chỉ(*):</h4>
+                       <textarea id="iptAddress"></textarea>                 
+                       <h4>Ghi chú:</h4>
+                       <textarea id="iptNote"></textarea>
+                    </div>
+                    <div class="methodPurchase">
+                        <h3>PHƯƠNG THỨC THANH TOÁN</h3>
+                        <br>
+                        <input class="checkPur" type="radio" name="check"> Nhận hàng rồi thanh toán <br>
+                        <input class="checkPur" type="radio" name="check"> Chuyển khoản ngân hàng <br>
+                        <input class="checkPur" type="radio" name="check"> Thanh toán tại văn phòng
+                    </div>
+                </div>
+                <div class="purchBar">
+                    <div class="purchBtn">
+                        <button id="buyBtn">THANH TOÁN</button>
+                        <button id="cancelPurchase">HỦY</button>
                     </div>
                 </div>
             </div>

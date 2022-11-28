@@ -66,7 +66,6 @@ window.onload = () => {
                         .collection("AdminMessSave")
                         .doc(response.docs[i].id)
                         .onSnapshot(async () => {
-                            console.log("111");
                             model.getChatAdmin(userName, response.docs[i].id);
                             let audio = new Audio("/Audio/Nhac-chuong-tin-nhan-Zalo.mp3");
                             let response1 = await firebase.firestore()
@@ -108,8 +107,10 @@ window.onload = () => {
                                             }
 
                                         }
-                                        lastTimeAdmin[check].missAd = Number(lastTimeAdmin[check].missAd) + 1;
-                                        localStorage.setItem("lastTimeAdmin", JSON.stringify(lastTimeAdmin));
+                                        if (lastTimeAdmin[check] != undefined) {
+                                            lastTimeAdmin[check].missAd = Number(lastTimeAdmin[check].missAd) + 1;
+                                            localStorage.setItem("lastTimeAdmin", JSON.stringify(lastTimeAdmin));
+                                        }
                                     }
                                 }
 
