@@ -470,9 +470,11 @@ model.admin = async () => {
             let result = "";
             for (let i in arrUserName) {
                 result += `
-                        <div class="userAccount" id="userAccount">${arrUserName[i].username}
+                        <div class="div">
+                            <div class="userAccount" id="userAccount">${arrUserName[i].username}</div>
                             <div class="userAccountMiss">0</div>
                         </div>
+                        
                     `
             }
             nameList.innerHTML = result;

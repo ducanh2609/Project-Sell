@@ -73,42 +73,43 @@ window.onload = () => {
                                 .collection("AdminMessSave")
                                 .doc(response.docs[i].id)
                                 .get()
-                            console.log(response.docs[i].id);
-                            console.log(userName);
                             let userAccount = document.getElementsByClassName("userAccount");
                             let userAccountMiss = document.getElementsByClassName("userAccountMiss");
                             if (response1.data() != undefined) {
                                 let arrMess = response1.data()[userName];
-                                console.log(arrMess);
-                                if (arrMess != undefined) {
-                                    for (let l = 0; l < arrMess.length; l++) {
-                                        if (arrMess[l].owner != "ducanh@gmail.com") {
-                                            let lastTimeAdmin = JSON.parse(localStorage.getItem("lastTimeAdmin"));
-                                            let time = new Date(arrMess[l].createdAt)
-                                            for (let j in lastTimeAdmin) {
-                                                if (lastTimeAdmin[j].username == userName) {
-                                                    if (lastTimeAdmin[j].time != undefined) {
-                                                        if (time.getTime() > lastTimeAdmin[j].time) {
-                                                            if (chatbox.style.display == "none") {
-                                                                for (let k = 0; k < userAccountMiss.length; k++) {
-                                                                    if (userAccount[k].innerHTML == userName) {
-                                                                        userAccountMiss[k].innerHTML = Number(lastTimeAdmin[j].missAd) + 1;
-                                                                        audio.play();
-                                                                        userAccountMiss[k].style.display = "block";
-                                                                        break;
+                                let lastTimeAdmin = JSON.parse(localStorage.getItem("lastTimeAdmin"));
+                                let check;
+                                if (lastTimeAdmin != null) {
+                                    if (arrMess != undefined) {
+                                        for (let l = 0; l < arrMess.length; l++) {
+                                            if (arrMess[l].owner != "ducanh@gmail.com") {
+                                                let time = new Date(arrMess[l].createdAt);
+                                                for (let j = 0; j < lastTimeAdmin.length; j++) {
+                                                    if (lastTimeAdmin[j].username == userName) {
+                                                        if (lastTimeAdmin[j].time != undefined) {
+                                                            if (time.getTime() > lastTimeAdmin[j].time) {
+                                                                if (chatbox.style.display == "none" || chatbox.style.display == "") {
+                                                                    for (let k = 0; k < userAccount.length; k++) {
+                                                                        if (userAccount[k].innerHTML == userName) {
+                                                                            userAccountMiss[k].innerHTML = Number(lastTimeAdmin[j].missAd) + 1;
+                                                                            audio.play();
+                                                                            userAccountMiss[k].style.display = "block";
+                                                                            break;
+                                                                        }
                                                                     }
-                                                                }
 
+                                                                }
                                                             }
                                                         }
+                                                        check = j;
+                                                        break;
                                                     }
-                                                    lastTimeAdmin[j].missAd = Number(lastTimeAdmin[j].missAd) + 1;
-                                                    localStorage.setItem("lastTimeAdmin", JSON.stringify(lastTimeAdmin));
-                                                    break;
                                                 }
                                             }
-                                        }
 
+                                        }
+                                        lastTimeAdmin[check].missAd = Number(lastTimeAdmin[check].missAd) + 1;
+                                        localStorage.setItem("lastTimeAdmin", JSON.stringify(lastTimeAdmin));
                                     }
                                 }
 
