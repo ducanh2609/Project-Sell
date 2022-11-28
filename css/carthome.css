@@ -8,9 +8,9 @@
 
 .main-menu1 {
   position: absolute;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   border-radius: 0 0 10px 10px;
-  width: 24.8%;
+  width: 25%;
   height: 500px;
   overflow: auto;
   display: none;
@@ -71,7 +71,24 @@
   cursor: pointer;
   background-color: #1e2021;
 }
-
+.preview-product {
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.796);
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  overflow: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 18.6% 18.6% 18.6% 18.6% 18.6%;
+  gap: 10px 10px;
+  right: 0;
+  color: white;
+  box-sizing: border-box;
+  visibility: hidden;
+}
 .main-body {
   /* position: relative; */
   width: 100%;
@@ -146,7 +163,6 @@
   /* border: 2px solid red; */
   margin: 30px 0 5px 0;
   max-height: max-content;
-
 }
 
 .row-header {

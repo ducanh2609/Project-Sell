@@ -43,7 +43,7 @@ component.registerPage = `
                 </form>
 
             </div>
-            `;
+        `;
 component.loginPage = `
             <div class="login-container">
                 <div class="login-modal"></div>
@@ -128,7 +128,7 @@ component.start = `
                                 </div>
                             </div>
                             <div class="extension extension2 da-0 da-sm-0 da-md-0">
-                                <div>Trang chủ</div>
+                                <div class="home-page-link">Trang chủ</div>
                                 <div>Dịch vụ</div>
                                 <div>Tin tức</div>
                                 <div>Tư vấn</div>
@@ -220,7 +220,7 @@ component.cartHome = `
                             </div>
                         </div>
                         <div class="extension extension2 da-0 da-sm-0 da-md-0">
-                            <div>Trang chủ</div>
+                            <div class="home-page-link">Trang chủ</div>
                             <div>Dịch vụ</div>
                             <div>Tin tức</div>
                             <div>Tư vấn</div>
@@ -236,6 +236,7 @@ component.cartHome = `
                     </div>
                     <div class="main-content">
                         <div class="main-menu1" id="main-menu1"></div>
+                        <div class="preview-product" id="previewProduct"></div>
                         <div class="main-body">
                             <div class="main-body-header">
                                 <span>Trang chủ ></span>

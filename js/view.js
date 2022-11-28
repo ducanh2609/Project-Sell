@@ -73,18 +73,31 @@ view.setScreenActive = (screenName) => {
                 model.forgotPass(acountEmail);
             })
             break;
-
         case "start":
             document.getElementById("app").innerHTML = component.start;
+            localStorage.setItem("currentView", JSON.stringify("start"));
             view.showElement("mainMenu");
             view.showElement("iconsContact");
             view.showElement("mainPicture");
             view.acount();
             view.boxAnimation();
             view.changePass();
+            view.pageDiv("menu-list");
+            var homePageLink = document.getElementsByClassName("home-page-link");
+            for (let i = 0; i < homePageLink.length; i++) {
+                homePageLink[i].addEventListener("click", () => {
+                    view.setScreenActive("start");
+                })
+            }
             chatbox.innerHTML = component.chatbox;
             model.pushDataComputer();
-            model.admin();
+            model.admin()
+                .then((arrid) => {
+                    let userAccountMiss = document.getElementsByClassName("userAccountMiss");
+                    for (let i in arrid) {
+                        model.getMissAdmin(arrid[i],userAccountMiss[i])
+                    }
+                })
             chatInput.addEventListener("keydown", async (event) => {
                 if (event.key == "Enter") {
                     if (auth.currentUser.email != "ducanh@gmail.com") {
@@ -170,6 +183,7 @@ view.setScreenActive = (screenName) => {
             searchIcon.addEventListener("click", () => {
                 if (searchContent.style.display == "none" || searchContent.style.display == "") {
                     searchContent.style.display = "block";
+                    mainShowSearch.innerHTML = "";
                     mainShowSearch.style.visibility = "visible";
                     productList.style.display = "none";
                 } else {
@@ -220,7 +234,14 @@ view.setScreenActive = (screenName) => {
             break;
         case "carthome":
             document.getElementById("body").innerHTML = component.cartHome;
+            localStorage.setItem("currentView", JSON.stringify("carthome"));
             view.showElement("mainMenu1");
+            homePageLink = document.getElementsByClassName("home-page-link");
+            for (let i = 0; i < homePageLink.length; i++) {
+                homePageLink[i].addEventListener("click", () => {
+                    view.setScreenActive("start");
+                })
+            }
             productList.setAttribute("style", "display:none");
 
             let mainMenu1 = document.getElementById("main-menu1");
@@ -228,9 +249,20 @@ view.setScreenActive = (screenName) => {
             extension1.addEventListener("mouseover", () => {
                 mainMenu1.setAttribute("style", "display:block");
             })
-            mainMenu1.addEventListener("mouseleave", () => {
+            let menuList1 = document.getElementsByClassName("menu-list1");
+            let content = document.getElementsByClassName("content");
+            for (let i = 0; i < menuList1.length; i++) {
+                menuList1[i].addEventListener("mouseover", () => {
+                    previewProduct.style.visibility = "visible";
+                    previewProduct.innerHTML = content[i].innerHTML;
+                    model.pageDiv();
+                })
+            }
+            previewProduct.addEventListener("mouseleave", () => {
+                previewProduct.style.visibility = "hidden";
                 mainMenu1.setAttribute("style", "display:none");
             })
+
             let logo = document.getElementById("logo");
             logo.addEventListener("click", () => {
                 view.setScreenActive("start");
@@ -296,6 +328,36 @@ view.setScreenActive = (screenName) => {
             break;
     }
 };
+view.pageDiv = (Class) => {
+    let menuList = document.getElementsByClassName(Class);
+    let content = document.getElementsByClassName("content");
+    for (let i = 0; i < menuList.length; i++) {
+        menuList[i].addEventListener("mouseover", () => {
+            searchContent.style.display = "none";
+            mainShowSearch.style.visibility = "visible";
+            mainShowSearch.innerHTML = content[i].innerHTML;
+            productList.style.display = "none";
+            model.pageDiv();
+        })
+        // if (mainShowSearch.style.visibility != "hidden") {
+        //     document.addEventListener("click", function handleClick(event) {
+        //         console.log(222);
+        //         let check = event.target.classList.contains("main-show-search");
+        //         if (check == false) {
+        //             mainShowSearch.style.visibility = "hidden";
+        //             productList.style.display = "block";
+
+        //         }
+        //     });
+        // }
+    }
+    mainShowSearch.addEventListener("mouseleave", () => {
+        mainShowSearch.style.visibility = "hidden";
+        productList.style.display = "block";
+        searchContent.style.display = "none";
+    })
+
+}
 view.showElement = (id) => {
     switch (id) {
         case "mainMenu":
@@ -502,6 +564,7 @@ view.showElement = (id) => {
                                             <div class="menu-list1"><img class="list-icon" src="${listIcons1[i]}" alt="">${arrMenuBar1[i]}</a></div>
                                         `
             }
+            break;
     }
 }
 view.acount = async () => {
@@ -523,6 +586,7 @@ view.acount = async () => {
                 if (confirmSignOut) {
                     firebase.auth().signOut();
                     alert("Cảm ơn bạn đã quan tâm đến sản phẩm của chúng tôi!");
+                    localStorage.setItem("currentView", "start");
                     // location.reload();
                 }
             });

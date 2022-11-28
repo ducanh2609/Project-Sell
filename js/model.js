@@ -123,6 +123,7 @@ model.requesProductQuanlity = async () => {
 
 // Hiện sp đã chọn vào giỏ hàng
 model.productClickded = async () => {
+    console.log("111");
     let response = await firebase.firestore()
         .collection("User")
         .doc(auth.currentUser.email)
@@ -469,7 +470,9 @@ model.admin = async () => {
             let result = "";
             for (let i in arrUserName) {
                 result += `
-                        <div class="userAccount" id="userAccount">${arrUserName[i].username}</div>
+                        <div class="userAccount" id="userAccount">${arrUserName[i].username}
+                            <div class="userAccountMiss">0</div>
+                        </div>
                     `
             }
             nameList.innerHTML = result;
@@ -481,8 +484,11 @@ model.admin = async () => {
                 }
             })
             let userAccount = document.getElementsByClassName("userAccount");
+            let userAccountMiss = document.getElementsByClassName("userAccountMiss");
             for (let i = 0; i < userAccount.length; i++) {
                 userAccount[i].addEventListener("click", () => {
+                    userAccountMiss[i].innerHTML = 0;
+                    userAccountMiss[i].style.display = "none";
                     let username = arrUserName[i].username;
                     currentChatName = username;
                     currentChatEmail = arrUserName[i].email;
@@ -492,18 +498,44 @@ model.admin = async () => {
                                 <span class="close" id="boxClose"><i class="fa-sharp fa-solid fa-square-xmark fa-lg"></i></span>
                             `
                     boxClose.addEventListener("click", () => {
-                        lastTime = {
-                            username: username,
-                            time: new Date(),
-                            messMiss: 0
+                        let lastTimeAdmin = JSON.parse(localStorage.getItem("lastTimeAdmin"));
+                        if (lastTimeAdmin == undefined) {
+                            lastTimeAdmin = [];
+                            lastTime = {
+                                username: username,
+                                time: new Date().getTime(),
+                                missAd: 0
+                            }
+                            lastTimeAdmin.push(lastTime);
+                            localStorage.setItem("lastTimeAdmin", JSON.stringify(lastTimeAdmin));
+                        } else {
+                            lastTime = {
+                                username: username,
+                                time: new Date().getTime(),
+                                missAd: 0
+                            }
+                            let flag = false;
+                            for (let i = 0; i < lastTimeAdmin.length; i++) {
+                                if (lastTimeAdmin[i].username == username) {
+                                    lastTimeAdmin[i].time = new Date().getTime();
+                                    lastTimeAdmin[i].missAd = 0;
+                                    flag = true;
+                                    break;
+                                }
+                            }
+                            if (flag == false) {
+                                lastTimeAdmin.push(lastTime);
+                            }
+                            localStorage.setItem("lastTimeAdmin", JSON.stringify(lastTimeAdmin));
                         }
                         chatbox.setAttribute("style", "display:none");
                     })
+
                     model.getChatAdmin(username, currentChatEmail);
                     model.messWaitingAdmin(currentChatEmail);
                 })
             }
-
+            return arrId;
         } else {
             icon[3].addEventListener("click", () => {
                 chatbox.setAttribute("style", "display:block");
@@ -593,11 +625,13 @@ model.getMessMiss = async () => {
         let sum = 0;
         if (arrMess != undefined) {
             for (let i = 0; i < arrMess.length; i++) {
-                let lastTime = JSON.parse(localStorage.getItem("lastTime"));
-                let time = new Date(arrMess[i].createdAt);
-                if (lastTime != undefined) {
-                    if (time.getTime() > lastTime) {
-                        sum += 1;
+                if (arrMess[i].owner != auth.currentUser.email) {
+                    let lastTime = JSON.parse(localStorage.getItem("lastTime"));
+                    let time = new Date(arrMess[i].createdAt);
+                    if (lastTime != undefined) {
+                        if (time.getTime() > lastTime) {
+                            sum += 1;
+                        }
                     }
                 }
             }
@@ -609,6 +643,46 @@ model.getMessMiss = async () => {
             }
         }
 
+    }
+}
+model.getMissAdmin = async (email, userAccountMiss) => {
+    let response = await firebase.firestore()
+        .collection("AdminMessSave")
+        .doc(email)
+        .get()
+    let userRes = await firebase.firestore()
+        .collection("User")
+        .doc(email)
+        .get()
+    let userName = userRes.data().userInfor.Username;
+    let userMess = response.data()[userName];
+    console.log(userMess);
+    let sum = 0;
+    let lastTimeAdmin = JSON.parse(localStorage.getItem("lastTimeAdmin"));
+    for (let i in lastTimeAdmin) {
+        if (lastTimeAdmin[i].username == userName) {
+            lastTime = lastTimeAdmin[i].time;
+            break;
+        }
+    }
+    if (userMess != undefined) {
+        for (let i = 0; i < userMess.length; i++) {
+            if (userMess[i].owner == email) {
+                let time = new Date(userMess[i].createdAt);
+                if (lastTime != undefined) {
+                    if (time.getTime() > lastTime) {
+                        sum += 1;
+                    }
+                }
+            }
+        }
+        console.log(sum);
+        if (sum == 0) {
+            userAccountMiss.style.display = "none";
+        } else {
+            userAccountMiss.innerHTML = sum;
+            userAccountMiss.style.display = "block";
+        }
     }
 }
 model.changePass = async (data) => {
@@ -795,4 +869,30 @@ model.uploadSend = async (file) => {
 model.getImgUpload = async () => {
     model.getImgAvatar()
     imgUpTable.style.display = "none";
+}
+model.pageDiv = async () => {
+    firebase.auth().onAuthStateChanged(async (user) => {
+        let flag = false;
+        if (user) {
+            flag = true;
+        }
+        let computerCart = document.getElementsByClassName("computer-cart");
+        for (let i = 0; i < computerCart.length; i++) {
+            if (flag == true) {
+                model.requesProductQuanlity();
+                computerCart[i].addEventListener("click", () => {
+                    let idea = confirm("Bạn có muốn thêm sản phẩm này vào giỏ hàng?");
+                    if (idea) {
+                        model.addProductToCard(computerCart[i].id);
+                        alert("Bạn đã thêm 1 sản phẩm vào giỏ hàng");
+                    }
+                })
+            } else {
+                computerCart[i].addEventListener("click", () => {
+                    alert("Bạn phải đăng nhập để mua sản phẩm này");
+                    view.setScreenActive("loginPage");
+                })
+            }
+        }
+    })
 }
