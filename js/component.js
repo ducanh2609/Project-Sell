@@ -195,7 +195,7 @@ component.start = `
                 </div>
             </div>
             </div>
-            <footer>
+            <footer id="footer">
             </footer>
         `
 component.cartHome = `
@@ -457,5 +457,39 @@ component.boxAnimation = `
                 <span style="--i:1;"></span>
                 <span style="--i:2;"></span>
                 <span style="--i:3;"></span>
+            </div>
+        `
+component.footer = `
+            <div class="footer1">
+                <div class="footer-contact">
+                    <p style="text-align: center"><strong>Máy tính Hoàng Hà</strong></p>  <br> <br>
+                    <p>Số 2 Ngõ 156 Lê Trọng Tấn - Thanh Xuân - Hà Nội</p>  
+                    <p>Hotline: 0988 592 692 - 0973 956 316</p>
+                    <p>Email: ducanh.nl2@gmail.com</p> 
+                </div>
+                <div class="footer-contact">
+                    <p style="text-align: center"><strong>Hỗ trợ mua hàng online</strong></p> <br> <br>
+                    <ul>
+                        <li>Hỗ trợ mua hàng trực tuyến</li>
+                        <li>Các hình thức cạnh tranh</li>
+                        <li>Chính sách vận chuyển</li>
+
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                <p style="text-align: center"><strong>Chính sách chung</strong></p> <br> <br>
+                    <ul>
+                        <li>Chính sách bảo mật thông tin</li>
+                        <li>Chính sách bảo hành</li>
+                        <li>Chính sách đổi trả sản phẩm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer2">
+                <p style="font-family: sans-serif, Arial, Verdana, " trebuchet="" ms";="" font-size:="" 13px;"=""><strong>Hoàng Hà computer</strong></p>
+                <p style="font-family: sans-serif, Arial, Verdana, " trebuchet="" ms";="" font-size:="" 13px;"="">Copyright © 2002 - 2016. All Rights Reserved by Hoang Ha computer</p>
+                <p style="font-family: sans-serif, Arial, Verdana, " trebuchet="" ms";="" font-size:="" 13px;"="">GP ĐKKD: 0109166525&nbsp;Cấp ngày 27/04/2020&nbsp;Sở kế hoạch đầu tư thành phố hà nội Phòng đăng ký kinh doanh&nbsp;</p>
+                <p style="font-family: sans-serif, Arial, Verdana, " trebuchet="" ms";="" font-size:="" 13px;"="">Đc: Số2/3/134 Lê Trọng Tấn - Thanh xuân- Hà nội &nbsp;ĐT 0988 592 692&nbsp;</p>
+                <p style="font-family: sans-serif, Arial, Verdana, " trebuchet="" ms";="" font-size:="" 13px;"="">Email: maytinhhoangha.com@gmail.com</p>
             </div>
         `

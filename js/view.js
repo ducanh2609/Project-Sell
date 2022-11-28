@@ -83,6 +83,8 @@ view.setScreenActive = (screenName) => {
             view.boxAnimation();
             view.changePass();
             view.pageDiv("menu-list");
+            view.footer();
+
             var homePageLink = document.getElementsByClassName("home-page-link");
             for (let i = 0; i < homePageLink.length; i++) {
                 homePageLink[i].addEventListener("click", () => {
@@ -274,8 +276,13 @@ view.setScreenActive = (screenName) => {
                 location.reload();
             })
             purchase.addEventListener("click", () => {
-                purchaseTab.style.display = "block";
-                model.purchase();
+                if (auth.currentUser != null) {
+                    purchaseTab.style.display = "block";
+                    model.purchase();
+                } else {
+                    alert("Bạn phải đăng nhập để sử dụng tính năng!")
+                    view.setScreenActive("loginPage")
+                }
             })
             buyBtn.addEventListener("click", () => {
                 let checkPur = document.getElementsByClassName("checkPur");
@@ -701,4 +708,7 @@ view.changePass = () => {
 view.boxAnimation = () => {
     boxAnimation.innerHTML = component.boxAnimation;
     boxAnimation1.innerHTML = component.boxAnimation;
+}
+view.footer = () => {
+    footer.innerHTML = component.footer
 }
