@@ -498,6 +498,8 @@ model.admin = async () => {
                                 <b>${arrUserName[i].username}</b>
                                 <span class="close" id="boxClose"><i class="fa-sharp fa-solid fa-square-xmark fa-lg"></i></span>
                             `
+                    chatbox.classList.add("chatbox");
+                    chatbox.classList.remove("chatboxClose");
                     boxClose.addEventListener("click", () => {
                         let lastTimeAdmin = JSON.parse(localStorage.getItem("lastTimeAdmin"));
                         if (lastTimeAdmin == undefined) {
@@ -529,7 +531,9 @@ model.admin = async () => {
                             }
                             localStorage.setItem("lastTimeAdmin", JSON.stringify(lastTimeAdmin));
                         }
-                        chatbox.setAttribute("style", "display:none");
+                        chatbox.classList.remove("chatbox");
+                        chatbox.classList.add("chatboxClose");
+                        // chatbox.setAttribute("style", "display:none");
                     })
 
                     model.getChatAdmin(username, currentChatEmail);
@@ -539,6 +543,8 @@ model.admin = async () => {
             return arrId;
         } else {
             icon[3].addEventListener("click", () => {
+                chatbox.classList.add("chatbox");
+                chatbox.classList.remove("chatboxClose");
                 chatbox.setAttribute("style", "display:block");
                 messNotify.style.display = "none";
                 mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
@@ -549,7 +555,8 @@ model.admin = async () => {
                 miss = 0;
                 localStorage.setItem("lastTime", lastTime.getTime());
                 localStorage.setItem("miss", miss);
-                chatbox.setAttribute("style", "display:none");
+                chatbox.classList.remove("chatbox");
+                chatbox.classList.add("chatboxClose");
             })
         }
     }

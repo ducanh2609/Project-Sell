@@ -170,7 +170,7 @@ component.start = `
                 </div>
             </div>
             <div id="productList"></div>
-            <div id="chatbox"></div>
+            <div class="chatbox" id="chatbox"></div>
             <div class="chatListName" id="chatListName">
                 <div class="nameHeader">
                     <h3>Contact</h3>
