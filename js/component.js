@@ -43,7 +43,7 @@ component.registerPage = `
                 </form>
 
             </div>
-        `;
+        `
 component.loginPage = `
             <div class="login-container">
                 <div class="login-modal"></div>

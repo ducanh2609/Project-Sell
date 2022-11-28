@@ -433,7 +433,7 @@ model.search = async (data) => {
             }
         }
     })
-};
+}
 let currentChatName;
 let currentChatEmail;
 let lastTime;
@@ -600,7 +600,7 @@ model.messWaiting = async (email) => {
                 }
             }
         })
-};
+}
 model.messWaitingAdmin = async (email) => {
     await firebase.firestore()
         .collection("messSave")
@@ -803,7 +803,7 @@ model.inforFormUpdate = async (data) => {
         inforBefore.style.display = "none";
     }, 1500)
     model.getInforUpdate();
-};
+}
 model.getInforUpdate = async () => {
     let response = await db.collection("User")
         .doc(auth.currentUser.email)
@@ -821,7 +821,7 @@ model.getInforUpdate = async () => {
         emailReceive.value = inforUpdate.Email;
         addressReceive.value = inforUpdate.Address;
     }
-};
+}
 
 model.ImgUpload = (fileInput) => {
     let url;
@@ -843,7 +843,7 @@ model.getImgAvatar = async () => {
         let url = await res.items[0].getDownloadURL();
         imgeUpload.src = `${url}`;
     }
-};
+}
 model.uploadSend = async (file) => {
     uploadSave.addEventListener("click", async () => {
         let res = await firebase.storage().ref(auth.currentUser.email)
@@ -864,7 +864,7 @@ model.uploadSend = async (file) => {
             .put(file)
         model.getImgUpload()
     })
-};
+}
 model.getImgUpload = async () => {
     model.getImgAvatar()
     imgUpTable.style.display = "none";

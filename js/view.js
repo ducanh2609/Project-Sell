@@ -347,7 +347,7 @@ view.setScreenActive = (screenName) => {
             })
             break;
     }
-};
+}
 view.pageDiv = (Class) => {
     let menuList = document.getElementsByClassName(Class);
     let content = document.getElementsByClassName("content");
@@ -647,7 +647,6 @@ view.showPassword = (password, icon) => {
         icon.classList.add("fa-eye");
     }
 }
-
 view.chatInput = (username, email) => {
     mesBoxContent.innerHTML += `
                     <div class="currentUser" id="currentUser">
