@@ -121,7 +121,7 @@ component.start = `
                     </div>
                     <div class="main" id="main">
                         <div class="main-extension">
-                            <div class="extension extension1">
+                            <div class="extension extension1 da-10">
                                 <div class="menu-bar"><i class="fa-sharp fa-solid fa-bars fa-lg"></i></div>
                                 <div class="menu-text">
                                     <h3>Danh mục sản phẩm</h3>
