@@ -339,10 +339,10 @@ view.setScreenActive = (screenName) => {
                     bought = responseBought.data().bought;
                 }
                 let checkBuy = document.getElementsByClassName("check-buy");
-                for (let i = 0; i < checkBuy.length; i++) {
+                for (let i = 0; i < clickedArr.length; i++) {
                     if (checkBuy[i].checked == true) {
                         let obj = clickedArr[i];
-                        obj.time = `${time}`
+                        obj.time = `${time}`;
                         bought.push(obj);
                         clickedArr.splice(i,1);
                     }
