@@ -128,7 +128,7 @@ component.start = `
                                 </div>
                             </div>
                             <div class="extension extension2 da-0 da-sm-0 da-md-0">
-                                <div class="home-page-link">Trang chủ</div>
+                                <div class="home-page-link" >Trang chủ</div>
                                 <div>Dịch vụ</div>
                                 <div>Tin tức</div>
                                 <div>Tư vấn</div>
@@ -150,7 +150,7 @@ component.start = `
                             </div>
                         </div>
                         <div class="main-content" id="main-content">
-                            <div class="main-menu" id="main-menu"></div>
+                            <div class="main-menu da-10" id="main-menu"></div>
                             <div class="main-show da-0" id="mainShow">
                                 <div class="main-picture" id="listImage">
                                     <img id="img" src="/Image/main_picture1.jpg" width="100%" height="100%" alt="error">

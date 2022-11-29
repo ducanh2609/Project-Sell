@@ -339,13 +339,17 @@ view.setScreenActive = (screenName) => {
                     bought = responseBought.data().bought;
                 }
                 let checkBuy = document.getElementsByClassName("check-buy");
-                for (let i = 0; i < clickedArr.length; i++) {
-                    if (checkBuy[i].checked == true) {
-                        let obj = clickedArr[i];
-                        obj.time = `${time}`;
-                        bought.push(obj);
-                        clickedArr.splice(i, 1);
-                        i = i - 1;
+                for (let i = 0, j = 0; i < clickedArr.length, j < checkBuy.length; i++, j++) {
+                    if (i == clickedArr.length || j == checkBuy.length) {
+                        break;
+                    } else {
+                        if (checkBuy[j].checked == true) {
+                            let obj = clickedArr[i];
+                            obj.time = `${time}`;
+                            bought.push(obj);
+                            clickedArr.splice(i, 1);
+                            i = i - 1;
+                        }
                     }
                 }
                 controller.purchase(buyInfor, clickedArr, bought);
