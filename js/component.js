@@ -276,6 +276,7 @@ component.cartHome = `
                                             <div class="cart-col col-price">Đơn giá</div>
                                             <div class="cart-col col-count">Số lượng</div>
                                             <div class="cart-col col-price-total">Giá VNĐ</div>
+                                            <div class="cart-col col-check-product">Chọn thanh toán</div>
                                             <div class="cart-col col-delete">Xóa</div>
                                         </div>
                                         <div id="updateCard"></div>
@@ -446,6 +447,14 @@ component.inforForm = `
                 </div>
                 <div class="boughtNotify">
                     <div class="boughtNotify-content">
+                        <p><strong>Sản phẩm đã mua:</strong></p> 
+                        <div class="product-bought-header">
+                            <div class="bought-img">Ảnh</div>
+                            <div class="bought-name">Thông tin sản phẩm</div>
+                            <div class="bought-time">Thời gian</div>
+                            <div class="bought-price">Tổng giá thành</div>
+                        </div>
+                        <div id="productBought"></div>
                     </div>
                 </div>
             </div>

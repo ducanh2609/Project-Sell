@@ -139,18 +139,21 @@ model.productClickded = async () => {
             for (let j = 0; j < productArr.length; j++) {
                 if (clickedArr[i].id == productArr[j].Id) {
                     newDiv += `
-                                        <div class="row-header" style="background-color: black;height: 70px;line-height: 70px;">
-                                            <div class="cart-col col-image">
-                                                <img  class="computer-img1" width=80% height=80% src="${productArr[j].Img}" alt="error">
-                                                </div>
-                                            <div class="cart-col col-name">${productArr[j].Name}</div>
-                                            <div class="cart-col col-price">${productArr[j].Price}</div>
-                                            <div class="cart-col col-count">
-                                                <input class="count"  type="number" value="${clickedArr[i].count}" min="0"></input>
-                                            </div>
-                                            <div class="cart-col col-price-total"></div>
-                                            <div class="cart-col col-delete"><i class="fa-solid fa-trash"></i></div>
-                                        </div>
+                            <div class="row-header" style="background-color: black;height: 70px;line-height: 70px;">
+                                <div class="cart-col col-image">
+                                    <img  class="computer-img1" width=80% height=80% src="${productArr[j].Img}" alt="error">
+                                    </div>
+                                <div class="cart-col col-name">${productArr[j].Name}</div>
+                                <div class="cart-col col-price">${productArr[j].Price}</div>
+                                <div class="cart-col col-count">
+                                    <input class="count"  type="number" value="${clickedArr[i].count}" min="0"></input>
+                                </div>
+                                <div class="cart-col col-price-total"></div>
+                                <div class="cart-col col-check-product">
+                                    <input class="check-buy" type="checkbox"></input>
+                                </div>
+                                <div class="cart-col col-delete"><i class="fa-solid fa-trash"></i></div>
+                            </div>
                         `
                 }
             }
@@ -166,31 +169,69 @@ model.productClickded = async () => {
 
 // Tính tổng tiền mỗi sp
 
-model.eachPrice = () => {
+model.eachPrice = (index, sum) => {
     let productPriceTotal = document.getElementsByClassName("col-price-total");
     let productCount = document.getElementsByClassName("count");
     let productPrice = document.getElementsByClassName("col-price");
+    let Price;
+    let tag;
     for (let i = 1; i <= productCount.length; i++) {
         if (productPrice[i].innerHTML != "Liên hệ") {
-            let Price = Number(productPrice[i].innerHTML.slice(0, -1).replace('.', '').replace('.', ''));
+            Price = Number(productPrice[i].innerHTML.slice(0, -1).replace('.', '').replace('.', ''));
             productPriceTotal[i].innerHTML = `${((Price * Number(productCount[i - 1].value)).toString()).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} đ`;
         } else {
+            Price = 0;
             productPriceTotal[i].innerHTML = "0 đ"
         }
-
+        if (index != undefined) {
+            if (i == index) {
+                tag = Price
+            }
+        }
+    }
+    if (index != undefined) {
+        let checkBuy = document.getElementsByClassName("check-buy");
+        if (checkBuy[index].checked == true) {
+            model.mainPriceTotal(index);
+        }
     }
 }
 
 // Tính tổng số tiền sp
-model.mainPriceTotal = () => {
+model.mainPriceTotal = (index) => {
     let productPriceTotal = document.getElementsByClassName("col-price-total");
     let mainPriceTotal = document.getElementById("sum");
-    let sum = 0;
-    for (let i = 1; i < productPriceTotal.length; i++) {
-        let productPriceTotal_1 = Number(productPriceTotal[i].innerHTML.slice(0, -1).replace('.', '').replace('.', ''));
-        sum = Number(sum) + Number(productPriceTotal_1);
+    let checkBuy = document.getElementsByClassName("check-buy");
+    if (index == undefined) {
+        for (let i = 0; i < checkBuy.length; i++) {
+            checkBuy[i].addEventListener("click", () => {
+                let sum = Number(mainPriceTotal.innerHTML.replace(/\./g, ''));
+                if (checkBuy[i].checked == true) {
+                    let productPriceTotal_1 = Number(productPriceTotal[i + 1].innerHTML.slice(0, -1).replace('.', '').replace('.', ''));
+                    sum = Number(sum) + Number(productPriceTotal_1);
+                    mainPriceTotal.innerHTML = `${(sum.toString()).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
+                } else {
+                    let sum = Number(mainPriceTotal.innerHTML.replace(/\./g, ''));
+                    let productPriceTotal_1 = Number(productPriceTotal[i + 1].innerHTML.slice(0, -1).replace('.', '').replace('.', ''));
+                    sum = Number(sum) - Number(productPriceTotal_1);
+                    if (sum < 0) {
+                        sum = 0;
+                    }
+                    mainPriceTotal.innerHTML = `${(sum.toString()).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
+                }
+            })
+        }
+    } else {
+        let sum = 0;
+        for (let i = 0; i < checkBuy.length; i++) {
+            if (checkBuy[i].checked == true) {
+                let productPriceTotal_1 = Number(productPriceTotal[i + 1].innerHTML.slice(0, -1).replace('.', '').replace('.', ''));
+                console.log(productPriceTotal_1);
+                sum = Number(sum) + Number(productPriceTotal_1);
+                mainPriceTotal.innerHTML = `${(sum.toString()).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
+            }
+        }
     }
-    mainPriceTotal.innerHTML = `${(sum.toString()).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
 }
 
 // Hiển thị só sp khi thay đổi số lượng trong giỏ hàng
@@ -203,8 +244,7 @@ model.productQualityChanged = async () => {
     let productCount = document.getElementsByClassName("count");
     for (let i = 0; i < productCount.length; i++) {
         productCount[i].addEventListener("change", async () => {
-            model.eachPrice();
-            model.mainPriceTotal();
+            model.eachPrice(i);
             clickedArr[i].count = productCount[i].value;
             await firebase.firestore()
                 .collection("User")
@@ -915,10 +955,21 @@ model.purchase = async () => {
         iptAddress.value = infor.Address;
     }
 }
-model.bought = async (data) => {
-    console.log(data);
+model.bought = async (data, clickedArr, bought) => {
+    await firebase.firestore()
+        .collection("User")
+        .doc(auth.currentUser.email)
+        .update({
+            clickedArr: clickedArr
+        })
+    await firebase.firestore()
+        .collection("User")
+        .doc(auth.currentUser.email)
+        .update({
+            bought: bought
+        })
     purchaseTab.style.display = "none";
-    let response = await firebase.firestore()
+    await firebase.firestore()
         .collection("User")
         .doc(auth.currentUser.email)
         .update({
@@ -930,5 +981,48 @@ model.bought = async (data) => {
             }
         })
     alert("Bạn đã đặt hàng thành công.\nCảm ơn bạn đã tin dùng sản phẩm của chúng tôi!");
+    location.reload();
+}
+model.boughtList = async () => {
+    let response = await firebase.firestore()
+        .collection("Product")
+        .doc("ComputerList")
+        .get()
+    let productList = response.data().list
+    let responseBought = await firebase.firestore()
+        .collection("User")
+        .doc(auth.currentUser.email)
+        .get()
+    let bought = responseBought.data().bought;
+    // let boughtImg = document.getElementsByClassName("boughtImg");
+    // let boughtName = document.getElementsByClassName("boughtName");
+    // let boughtCount = document.getElementsByClassName("boughtCount");
+    // let boughtEachPrice = document.getElementsByClassName("boughtEachPrice");
+    // let boughtTime = document.getElementsByClassName("bought-time");
+    // let boughtTotalPrice = document.getElementsByClassName("bought-price");
 
+    let result = "";
+    for (let i = 0; i < bought.length; i++) {
+        for (let j = 0; j < productList.length; j++) {
+            if (bought[i].id == productList[j].Id) {
+                let total = Number(productList[j].Price.slice(0, -1).replace('.', '').replace('.', '')) * Number(bought[i].count);
+                result += `
+                        <div class="product-bought">
+                            <div class="bought-img">
+                                <img class="boughtImg" src="${productList[j].Img}" alt="error">
+                            </div>
+                            <div class="bought-name">
+                                Tên: <span class="boughtName">${productList[j].Name}</span> <br>
+                                Số lượng: <span class="boughtCount">${bought[i].count}</span> <br>
+                                Đơn giá: <span class="boughtEachPrice">${productList[j].Price}</span>
+                            </div>
+                            <div class="bought-time">${bought[i].time}</div>
+                            <div class="bought-price">${(total.toString()).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} VNĐ</div>
+                        </div>
+                `
+                break;
+            }
+        }
+    }
+    productBought.innerHTML = result;
 }

@@ -131,7 +131,7 @@ controller.inforForm = (data) => {
         model.inforFormUpdate(data);
     }
 }
-controller.purchase = (data) => {
+controller.purchase = (data,clickedArr,bought) => {
     if (data.Name == "") {
         iptName.style["background-color"] = "pink";
     } else {
@@ -160,6 +160,6 @@ controller.purchase = (data) => {
     }
     if (data.Name != "" && vnf_regex.test(data.Mobile) == true && data.Address != "" && flag == true) {
         console.log(111);
-        model.bought(data);
+        model.bought(data,clickedArr,bought);
     }
 }

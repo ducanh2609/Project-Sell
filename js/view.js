@@ -85,6 +85,8 @@ view.setScreenActive = (screenName) => {
             view.pageDiv("menu-list");
             view.footer();
 
+            // view.setScreenActive("informationUser")
+
             var homePageLink = document.getElementsByClassName("home-page-link");
             for (let i = 0; i < homePageLink.length; i++) {
                 homePageLink[i].addEventListener("click", () => {
@@ -258,13 +260,31 @@ view.setScreenActive = (screenName) => {
                     previewProduct.style.visibility = "visible";
                     previewProduct.innerHTML = content[i].innerHTML;
                     model.pageDiv();
+                    // if (previewProduct.style.visibility == "visible") {
+                    //     console.log(111);
+                    //     document.addEventListener("click", (e) => {
+                    //         let check = e.target.classList.contains("preview-product");
+                    //         if (!check) {
+                    //             console.log(check);
+                    //             previewProduct.style.visibility = "hidden";
+                    //             mainMenu1.setAttribute("style", "display:none");
+                    //         }
+                    //     })
+                    // }
                 })
+
             }
             previewProduct.addEventListener("mouseleave", () => {
                 previewProduct.style.visibility = "hidden";
                 mainMenu1.setAttribute("style", "display:none");
             })
-
+            if (previewProduct.style.visibility == "visible") {
+                console.log(111);
+                document.addEventListener("click", (e) => {
+                    let check = e.target.classList.contain("previewProduct");
+                    console.log(check);
+                })
+            }
             let logo = document.getElementById("logo");
             logo.addEventListener("click", () => {
                 view.setScreenActive("start");
@@ -276,15 +296,30 @@ view.setScreenActive = (screenName) => {
                 location.reload();
             })
             purchase.addEventListener("click", () => {
-                if (auth.currentUser != null) {
-                    purchaseTab.style.display = "block";
-                    model.purchase();
+                let checkBuy = document.getElementsByClassName("check-buy");
+                let flag = false;
+                for (let i = 0; i < checkBuy.length; i++) {
+                    if (checkBuy[i].checked == true) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag == true) {
+                    let Confirm = confirm("Bạn có chắc muốn thanh toán với sản phẩm và số lượng đã chọn?");
+                    if (Confirm == true) {
+                        if (auth.currentUser != null) {
+                            purchaseTab.style.display = "block";
+                            model.purchase();
+                        } else {
+                            alert("Bạn phải đăng nhập để sử dụng tính năng!")
+                            view.setScreenActive("loginPage")
+                        }
+                    }
                 } else {
-                    alert("Bạn phải đăng nhập để sử dụng tính năng!")
-                    view.setScreenActive("loginPage")
+                    alert("Bạn phải chọn ít nhất 1 sản phẩm để thanh toán")
                 }
             })
-            buyBtn.addEventListener("click", () => {
+            buyBtn.addEventListener("click", async () => {
                 let checkPur = document.getElementsByClassName("checkPur");
                 let buyInfor = {
                     Name: iptName.value,
@@ -293,7 +328,32 @@ view.setScreenActive = (screenName) => {
                     Address: iptAddress.value,
                     check: checkPur
                 }
-                controller.purchase(buyInfor);
+                let time = new Date;
+                let response = await firebase.firestore()
+                    .collection("User")
+                    .doc(auth.currentUser.email)
+                    .get()
+                let clickedArr = response.data().clickedArr;
+                let responseBought = await firebase.firestore()
+                    .collection("User")
+                    .doc(auth.currentUser.email)
+                    .get()
+                let bought;
+                if (responseBought.data().bought == undefined) {
+                    bought = [];
+                } else {
+                    bought = responseBought.data().bought;
+                }
+                let checkBuy = document.getElementsByClassName("check-buy");
+                for (let i = 0; i < checkBuy.length; i++) {
+                    if (checkBuy[i].checked == true) {
+                        let obj = clickedArr[i];
+                        obj.time = `${time}`
+                        bought.push(obj);
+                        clickedArr.splice(i, 1);
+                    }
+                }
+                controller.purchase(buyInfor, clickedArr, bought);
             })
             cancelPurchase.addEventListener("click", () => {
                 purchaseTab.style.display = "none";
@@ -309,6 +369,7 @@ view.setScreenActive = (screenName) => {
             model.getInforUpdate();
             model.inforForm();
             model.getImgAvatar();
+            model.boughtList();
             userAvatar.addEventListener("mouseover", () => {
                 imgUpload.style.display = "block"
             })
@@ -373,7 +434,6 @@ view.pageDiv = (Class) => {
         //         if (check == false) {
         //             mainShowSearch.style.visibility = "hidden";
         //             productList.style.display = "block";
-
         //         }
         //     });
         // }

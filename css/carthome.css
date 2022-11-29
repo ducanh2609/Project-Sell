@@ -1,8 +1,9 @@
 .main1 {
+  position: relative;
   background-color: white;
   /* border: 2px solid yellow; */
   width: 100%;
-  height: max-content;
+  min-height: 100vh;
   border-radius: 10px;
 }
 
@@ -90,8 +91,9 @@
   visibility: hidden;
 }
 .main-body {
-  /* position: relative; */
+  position: relative;
   width: 100%;
+  min-height: calc(100vh - 54px);
   /* border: 1px solid yellow; */
   background-color: rgb(18, 18, 18);
   padding-bottom: 20px;
@@ -194,7 +196,7 @@
 }
 
 .col-price {
-  width: 25%;
+  width: 15%;
 }
 
 .col-count {
@@ -208,7 +210,10 @@
 }
 
 .col-price-total {
-  width: 20%;
+  width: 15%;
+}
+.col-check-product {
+  width: 15%;
 }
 
 .col-delete {
