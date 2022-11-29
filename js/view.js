@@ -344,7 +344,8 @@ view.setScreenActive = (screenName) => {
                         let obj = clickedArr[i];
                         obj.time = `${time}`;
                         bought.push(obj);
-                        clickedArr.splice(i,1);
+                        clickedArr.splice(i, 1);
+                        i = i - 1;
                     }
                 }
                 controller.purchase(buyInfor, clickedArr, bought);
