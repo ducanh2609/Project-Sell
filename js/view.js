@@ -195,6 +195,7 @@ view.setScreenActive = (screenName) => {
                     mainShowSearch.style.visibility = "hidden";
                     productList.style.display = "block";
                     mainShowSearch.innerHTML = "";
+                    location.reload()
                 }
             })
             search.addEventListener("input", () => {
