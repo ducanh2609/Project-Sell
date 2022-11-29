@@ -159,7 +159,6 @@ controller.purchase = (data,clickedArr,bought) => {
         alert("Bạn phải chọn 1 phương thức thanh toán")
     }
     if (data.Name != "" && vnf_regex.test(data.Mobile) == true && data.Address != "" && flag == true) {
-        console.log(111);
         model.bought(data,clickedArr,bought);
     }
 }

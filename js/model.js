@@ -27,12 +27,7 @@ model.register = async (data) => {
 model.login = async (data) => {
 
     try {
-        let response = await auth.signInWithEmailAndPassword(data.email, data.password);
-        if (response) {
-            location.reload();
-        } else {
-            alert("please verify email");
-        }
+        await auth.signInWithEmailAndPassword(data.email, data.password);
     } catch (error) {
         alert(error.message);
     }
@@ -981,7 +976,7 @@ model.bought = async (data, clickedArr, bought) => {
             }
         })
     alert("Bạn đã đặt hàng thành công.\nCảm ơn bạn đã tin dùng sản phẩm của chúng tôi!");
-    location.reload();
+    location.reload()
 }
 model.boughtList = async () => {
     let response = await firebase.firestore()
@@ -994,13 +989,6 @@ model.boughtList = async () => {
         .doc(auth.currentUser.email)
         .get()
     let bought = responseBought.data().bought;
-    // let boughtImg = document.getElementsByClassName("boughtImg");
-    // let boughtName = document.getElementsByClassName("boughtName");
-    // let boughtCount = document.getElementsByClassName("boughtCount");
-    // let boughtEachPrice = document.getElementsByClassName("boughtEachPrice");
-    // let boughtTime = document.getElementsByClassName("bought-time");
-    // let boughtTotalPrice = document.getElementsByClassName("bought-price");
-
     let result = "";
     for (let i = 0; i < bought.length; i++) {
         for (let j = 0; j < productList.length; j++) {

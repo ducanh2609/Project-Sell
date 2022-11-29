@@ -82,7 +82,7 @@ view.setScreenActive = (screenName) => {
             view.acount();
             view.boxAnimation();
             view.changePass();
-            view.pageDiv("menu-list");
+            // view.pageDiv("menu-list");
             view.footer();
 
             // view.setScreenActive("informationUser")
@@ -278,13 +278,6 @@ view.setScreenActive = (screenName) => {
                 previewProduct.style.visibility = "hidden";
                 mainMenu1.setAttribute("style", "display:none");
             })
-            if (previewProduct.style.visibility == "visible") {
-                console.log(111);
-                document.addEventListener("click", (e) => {
-                    let check = e.target.classList.contain("previewProduct");
-                    console.log(check);
-                })
-            }
             let logo = document.getElementById("logo");
             logo.addEventListener("click", () => {
                 view.setScreenActive("start");
