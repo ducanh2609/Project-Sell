@@ -96,10 +96,12 @@ view.setScreenActive = (screenName) => {
             chatbox.innerHTML = component.chatbox;
             model.pushDataComputer();
             model.admin()
-                .then((arrid) => {
+                .then(([arrId, arrUserName]) => {
                     let userAccountMiss = document.getElementsByClassName("userAccountMiss");
-                    for (let i in arrid) {
-                        model.getMissAdmin(arrid[i], userAccountMiss[i])
+                    let statusUser = document.getElementsByClassName("statusUser");
+                    for (let i in arrId) {
+                        model.getMissAdmin(arrId[i], userAccountMiss[i])
+                        model.status(arrUserName[i], statusUser[i])
                     }
                 })
             chatInput.addEventListener("keydown", async (event) => {
@@ -667,12 +669,19 @@ view.acount = async () => {
                 productList.setAttribute("style", "display:none");
             })
             // if (signOut != null) {
-            signOut.addEventListener("click", () => {
+            signOut.addEventListener("click", async () => {
                 let confirmSignOut = confirm("Bạn có muốn thoát phiên đăng nhập hiện tại");
                 if (confirmSignOut) {
+                    await firebase.firestore()
+                        .collection("User")
+                        .doc(auth.currentUser.email)
+                        .update({
+                            status: "offline"
+                        })
                     firebase.auth().signOut();
                     alert("Cảm ơn bạn đã quan tâm đến sản phẩm của chúng tôi!");
                     localStorage.setItem("currentView", "start");
+
                     // location.reload();
                 }
             });

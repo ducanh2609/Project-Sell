@@ -47,8 +47,10 @@ window.onload = () => {
                                     }
                                 }
                             }
-                            miss++;
-                            localStorage.setItem("miss", miss);
+                            if (chatbox.style.display == "none") {
+                                miss++;
+                                localStorage.setItem("miss", miss);
+                            }
                         }
                     }
                 })
@@ -105,18 +107,40 @@ window.onload = () => {
                                                     }
                                                 }
                                             }
-
                                         }
-                                        if (lastTimeAdmin[check] != undefined) {
-                                            lastTimeAdmin[check].missAd = Number(lastTimeAdmin[check].missAd) + 1;
-                                            localStorage.setItem("lastTimeAdmin", JSON.stringify(lastTimeAdmin));
+                                        if (chatbox.style.display == "none") {
+                                            if (lastTimeAdmin[check] != undefined) {
+                                                lastTimeAdmin[check].missAd = Number(lastTimeAdmin[check].missAd) + 1;
+                                                localStorage.setItem("lastTimeAdmin", JSON.stringify(lastTimeAdmin));
+                                            }
                                         }
                                     }
                                 }
 
                             }
                         })
+                    await firebase.firestore()
+                        .collection("User")
+                        .doc(response.docs[i].id)
+                        .onSnapshot(async () => {
+                            let res = await firebase.firestore()
+                                .collection("User")
+                                .doc(response.docs[i].id)
+                                .get()
+                            let getStatus = res.data().status;
+                            let statusUser = document.getElementsByClassName("statusUser");
+                            console.log(statusUser[i]);
+                            console.log(getStatus);
+                            if (getStatus == "online") {
+                                statusUser[i].classList.add("status");
+                                statusUser[i].classList.remove("status-off");
+                            } else {
+                                statusUser[i].classList.remove("status");
+                                statusUser[i].classList.add("status-off");
+                            }
+                        })
                 }
+
             }
 
         } else {

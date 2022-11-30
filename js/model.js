@@ -18,6 +18,27 @@ model.register = async (data) => {
             .collection("User")
             .doc(auth.currentUser.email)
             .set({ userInfor: data })
+        let time = new Date();
+        await firebase.firestore()
+            .collection("AdminMessSave")
+            .doc(auth.currentUser.email)
+            .set({
+                [data.Username]: [{
+                    content: `Chào mừng bạn đến với cửa hàng\nTôi có thể giúp gì bạn`,
+                    createdAt: `${time}`,
+                    owner: "ducanh@gmail.com"
+                }]
+            })
+        await firebase.firestore()
+            .collection("messSave")
+            .doc(auth.currentUser.email)
+            .set({
+                admin: [{
+                    content: `Chào mừng bạn đến với cửa hàng. Tôi có thể giúp gì bạn`,
+                    createdAt: `${time}`,
+                    owner: "ducanh@gmail.com"
+                }]
+            })
         firebase.auth().signOut();
     } catch (error) {
         alert(error.message);
@@ -25,9 +46,15 @@ model.register = async (data) => {
 }
 
 model.login = async (data) => {
-
     try {
         await auth.signInWithEmailAndPassword(data.email, data.password);
+        await firebase.firestore()
+            .collection("User")
+            .doc(auth.currentUser.email)
+            .update({
+                status: "online"
+            })
+        location.reload();
     } catch (error) {
         alert(error.message);
     }
@@ -497,20 +524,21 @@ model.admin = async () => {
                         .get()
                     arrUserName.push({
                         username: userMess.data().userInfor.Username,
-                        email: arrId[i]
+                        email: arrId[i],
+                        status: userMess.data().status
                     });
                 }
             }
             let result = "";
             for (let i in arrUserName) {
                 result += `
-                        <div class="div">
-                            <div class="userAccount" id="userAccount">${arrUserName[i].username}</div>
-                            <div class="userAccountMiss">0</div>
-                        </div>
-                        
-                    `
+                            <div class="div">
+                                <div class="userAccount" id="userAccount"><span class="statusUser status-off"></span>${arrUserName[i].username}</div>
+                                <div class="userAccountMiss">0</div>
+                            </div>
+                        `
             }
+
             nameList.innerHTML = result;
             nameListClose.addEventListener("click", () => {
                 if (nameList.style.display == "" || nameList.style.display == "block") {
@@ -568,14 +596,16 @@ model.admin = async () => {
                         }
                         chatbox.classList.remove("chatbox");
                         chatbox.classList.add("chatboxClose");
-                        // chatbox.setAttribute("style", "display:none");
+                        setTimeout(() => {
+                            chatbox.style.display = "none";
+                        }, 1000)
                     })
 
                     model.getChatAdmin(username, currentChatEmail);
                     model.messWaitingAdmin(currentChatEmail);
                 })
             }
-            return arrId;
+            return [arrId,arrUserName];
         } else {
             icon[3].addEventListener("click", () => {
                 chatbox.classList.add("chatbox");
@@ -592,6 +622,9 @@ model.admin = async () => {
                 localStorage.setItem("miss", miss);
                 chatbox.classList.remove("chatbox");
                 chatbox.classList.add("chatboxClose");
+                setTimeout(() => {
+                    chatbox.style.display = "none";
+                }, 1000)
             })
         }
     }
@@ -1013,4 +1046,13 @@ model.boughtList = async () => {
         }
     }
     productBought.innerHTML = result;
+}
+model.status = (arrUserName,statusUser) => {
+        if (arrUserName.status == "online") {
+            statusUser.classList.add("status");
+            statusUser.classList.remove("status-off");
+        } else {
+            statusUser.classList.remove("status");
+            statusUser.classList.add("status-off");
+        }
 }

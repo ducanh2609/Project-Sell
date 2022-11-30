@@ -97,8 +97,8 @@ component.start = `
                     </div>
                 </div>
             </div>
-            <div class="boxAnimation" id="boxAnimation"></div>
-            <div class="boxAnimation" id="boxAnimation1"></div>
+            <div class="boxAnimation da-0" id="boxAnimation"></div>
+            <div class="boxAnimation da-0" id="boxAnimation1"></div>
             <div class="admin-contact">
                 <div class="icon"><a href=""></a></div>
                 <div class="icon"><a href=""></a></div>
