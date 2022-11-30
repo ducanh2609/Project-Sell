@@ -1,6 +1,7 @@
 window.onload = () => {
     firebase.auth().onAuthStateChanged(async (user) => {
         if (user) {
+
             let currentView = JSON.parse(localStorage.getItem("currentView"));
             if (currentView == null) {
                 view.setScreenActive("start");
@@ -13,6 +14,12 @@ window.onload = () => {
                 }
             }
             if (auth.currentUser.email != "ducanh@gmail.com") {
+                await firebase.firestore()
+                    .collection("User")
+                    .doc(auth.currentUser.email)
+                    .update({
+                        status: "online"
+                    })
                 model.getMessMiss();
                 model.messWaiting(auth.currentUser.email);
             }
@@ -37,7 +44,7 @@ window.onload = () => {
                                         let time = new Date(arrMess[i].createdAt)
                                         if (lastTime != undefined) {
                                             if (time.getTime() > lastTime) {
-                                                if (chatbox.style.display == "none") {
+                                                if (chatbox.style.display == "none" || chatbox.style.display == "") {
                                                     messNumber.innerHTML = Number(miss) + 1;
                                                     audio.play();
                                                     messNotify.style.display = "block";
@@ -98,7 +105,6 @@ window.onload = () => {
                                                                             break;
                                                                         }
                                                                     }
-
                                                                 }
                                                             }
                                                         }
@@ -147,4 +153,17 @@ window.onload = () => {
             view.setScreenActive("start");
         }
     })
+    window.onbeforeunload = async (e) => {
+        if (e.path[0].closed != true) {
+            setTimeout(()=>{
+                window.onload();
+            },3000)
+            await firebase.firestore()
+                .collection("User")
+                .doc(auth.currentUser.email)
+                .update({
+                    status: "offline"
+                })
+        }
+    }
 }
