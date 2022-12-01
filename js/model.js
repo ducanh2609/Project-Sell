@@ -506,6 +506,7 @@ model.admin = async () => {
         if (auth.currentUser.email == "ducanh@gmail.com") {
             icon[3].addEventListener("click", () => {
                 chatListName.setAttribute("style", "display:block");
+                messNotify.style.display = "none";
             })
             let response = await firebase.firestore()
                 .collection("messSave")
@@ -553,6 +554,8 @@ model.admin = async () => {
                 userAccount[i].addEventListener("click", () => {
                     userAccountMiss[i].innerHTML = 0;
                     userAccountMiss[i].style.display = "none";
+                    lastTime = new Date();
+                    localStorage.setItem("lastTime", lastTime.getTime());
                     let username = arrUserName[i].username;
                     currentChatName = username;
                     currentChatEmail = arrUserName[i].email;
@@ -605,21 +608,22 @@ model.admin = async () => {
                     model.messWaitingAdmin(currentChatEmail);
                 })
             }
-            return [arrId,arrUserName];
+            return [arrId, arrUserName];
         } else {
             icon[3].addEventListener("click", () => {
                 chatbox.classList.add("chatbox");
                 chatbox.classList.remove("chatboxClose");
                 chatbox.setAttribute("style", "display:block");
                 messNotify.style.display = "none";
+                messNumber.innerHTML = 0;
                 mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
+                lastTime = new Date();
+                localStorage.setItem("lastTime", lastTime.getTime());
             })
             model.getChatSave();
             boxClose.addEventListener("click", () => {
                 lastTime = new Date();
-                miss = 0;
                 localStorage.setItem("lastTime", lastTime.getTime());
-                localStorage.setItem("miss", miss);
                 chatbox.classList.remove("chatbox");
                 chatbox.classList.add("chatboxClose");
                 setTimeout(() => {
@@ -691,7 +695,7 @@ model.messWaitingAdmin = async (email) => {
             }
         })
 }
-model.getMessMiss = async () => {
+model.getMessMiss = async (audio) => {
     let response = await firebase.firestore()
         .collection("messSave")
         .doc(auth.currentUser.email)
@@ -707,6 +711,11 @@ model.getMessMiss = async () => {
                     if (lastTime != undefined) {
                         if (time.getTime() > lastTime) {
                             sum += 1;
+                            if (audio != undefined) {
+                                if (chatbox.style.display == "none") {
+                                    audio.play()
+                                }
+                            }
                         }
                     }
                 }
@@ -721,7 +730,7 @@ model.getMessMiss = async () => {
 
     }
 }
-model.getMissAdmin = async (email, userAccountMiss) => {
+model.getMissAdmin = async (email, userAccountMiss, audio) => {
     let response = await firebase.firestore()
         .collection("AdminMessSave")
         .doc(email)
@@ -745,8 +754,15 @@ model.getMissAdmin = async (email, userAccountMiss) => {
             if (userMess[i].owner == email) {
                 let time = new Date(userMess[i].createdAt);
                 if (lastTime != undefined) {
+                    console.log(time.getTime());
+                    console.log(lastTime);
                     if (time.getTime() > lastTime) {
                         sum += 1;
+                        if (audio != undefined) {
+                            if (chatbox.style.display == "none") {
+                                audio.play()
+                            }
+                        }
                     }
                 }
             }
@@ -754,8 +770,10 @@ model.getMissAdmin = async (email, userAccountMiss) => {
         if (sum == 0) {
             userAccountMiss.style.display = "none";
         } else {
-            userAccountMiss.innerHTML = sum;
-            userAccountMiss.style.display = "block";
+            if (chatbox.style.display != "block") {
+                userAccountMiss.innerHTML = sum;
+                userAccountMiss.style.display = "block";
+            }
         }
     }
 }
@@ -1047,12 +1065,12 @@ model.boughtList = async () => {
     }
     productBought.innerHTML = result;
 }
-model.status = (arrUserName,statusUser) => {
-        if (arrUserName.status == "online") {
-            statusUser.classList.add("status");
-            statusUser.classList.remove("status-off");
-        } else {
-            statusUser.classList.remove("status");
-            statusUser.classList.add("status-off");
-        }
+model.status = (arrUserName, statusUser) => {
+    if (arrUserName.status == "online") {
+        statusUser.classList.add("status");
+        statusUser.classList.remove("status-off");
+    } else {
+        statusUser.classList.remove("status");
+        statusUser.classList.add("status-off");
+    }
 }
