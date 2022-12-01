@@ -46,6 +46,9 @@
   .login-form {
     scale: 0.7 !important;
   }
+  .box {
+    font-size: 20px !important;
+  }
   .content {
     grid-template-columns: 30% 30% 30% !important;
     gap: 17px 17px !important;
