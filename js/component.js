@@ -213,7 +213,7 @@ component.cartHome = `
                 </div>
                 <div class="main1" id="main1">
                     <div class="main-extension">
-                        <div class="extension extension1" id="extension1">
+                        <div class="extension extension1 da-10" id="extension1">
                             <div class="menu-bar"><i class="fa-sharp fa-solid fa-bars fa-lg"></i></div>
                             <div class="menu-text">
                                 <h3>Danh mục sản phẩm</h3>
@@ -235,8 +235,8 @@ component.cartHome = `
                         </div>
                     </div>
                     <div class="main-content">
-                        <div class="main-menu1" id="main-menu1"></div>
-                        <div class="preview-product" id="previewProduct"></div>
+                        <div class="main-menu1 da-10" id="main-menu1"></div>
+                        <div class="preview-product da-10" id="previewProduct"></div>
                         <div class="main-body">
                             <div class="main-body-header">
                                 <span>Trang chủ ></span>
@@ -274,9 +274,9 @@ component.cartHome = `
                                             <div class="cart-col col-image" style="padding-top:0px !important">Ảnh</div>
                                             <div class="cart-col col-name">Tên sản phẩm</div>
                                             <div class="cart-col col-price">Đơn giá</div>
-                                            <div class="cart-col col-count">Số lượng</div>
+                                            <div class="cart-col col-count repon">Số lượng</div>
                                             <div class="cart-col col-price-total">Giá VNĐ</div>
-                                            <div class="cart-col col-check-product">Chọn thanh toán</div>
+                                            <div class="cart-col col-check-product repon">Chọn thanh toán</div>
                                             <div class="cart-col col-delete">Xóa</div>
                                         </div>
                                         <div id="updateCard"></div>
@@ -285,7 +285,7 @@ component.cartHome = `
                                     <div class="main-price-total" id="main-price-total">
                                         Tổng tiền: <span id="sum">0</span> VNĐ
                                     </div>
-                                    <div class="main-card-customer">
+                                    <div class="main-card-customer">    
                                         <button id="buyCont">
                                             <h3>TIẾP TỤC MUA</h3>
                                         </button>

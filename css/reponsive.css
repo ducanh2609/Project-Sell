@@ -80,6 +80,22 @@
     height: auto !important;
     scale: 0.9 !important;
   }
+  .main-card-table {
+    font-size: 9px !important;
+  }
+  .col-name {
+    line-height: 18px !important;
+  }
+  .repon {
+    line-height: 15px !important;
+  }
+  .main-card-customer div {
+    display: flex !important;
+    width: 60% !important;
+  }
+  .preview-product {
+    grid-template-columns: 30% 30% 30% !important;
+  }
   .holine-box {
     height: 100px !important;
     padding: 12px 0 0 0 !important;
@@ -94,6 +110,7 @@
   .holine-box strong {
     font-size: 20px !important;
   }
+
   footer {
     height: 320px !important;
   }

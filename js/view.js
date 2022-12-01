@@ -649,7 +649,7 @@ view.showElement = (id) => {
             for (let i = 0; i < arrMenuBar1.length; i++) {
                 mainMenu1.innerHTML +=
                     `
-                                            <div class="menu-list1"><img class="list-icon" src="${listIcons1[i]}" alt="">${arrMenuBar1[i]}</a></div>
+                                            <div class="menu-list1 da-10"><img class="list-icon" src="${listIcons1[i]}" alt="">${arrMenuBar1[i]}</a></div>
                                         `
             }
             break;
