@@ -164,7 +164,7 @@ component.start = `
                                             alt=""></div>
                                 </div>
                             </div>
-                            <div class="main-show-search" id="mainShowSearch"></div>
+                            <div class="main-show-search da-0" id="mainShowSearch"></div>
                         </div>
                     </div>
                 </div>

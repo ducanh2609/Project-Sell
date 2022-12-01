@@ -40,7 +40,7 @@
   }
 
   .da-10 {
-    max-width: 100% !important;
+    width: 100% !important;
   }
 
   .content {
@@ -48,12 +48,6 @@
   }
   .header {
     height: 43px !important;
-  }
-  .main-menu {
-    width: 90% !important;
-  }
-  .extension1 {
-    width: 90% !important;
   }
   .menu {
     /* border: 2px solid red; */
