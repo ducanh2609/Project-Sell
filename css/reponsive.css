@@ -42,8 +42,9 @@
   .da-10 {
     width: 100% !important;
   }
-  .register-form {
-    scale: 0.5 !important;
+  .register-form,
+  .login-form {
+    scale: 0.7 !important;
   }
   .content {
     grid-template-columns: 30% 30% 30% !important;
