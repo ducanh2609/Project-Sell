@@ -92,6 +92,13 @@
   .repon {
     line-height: 15px !important;
   }
+  .derepon {
+    line-height: 34px !important;
+  }
+  .count,
+  .check-buy {
+    scale: 0.6 !important;
+  }
   .main-card-customer div {
     display: flex !important;
     width: 60% !important;

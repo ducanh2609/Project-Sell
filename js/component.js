@@ -272,9 +272,9 @@ component.cartHome = `
                                     <div class="main-card-table" id="main-card-table">
                                         <div class="row-header">
                                             <div class="cart-col col-image" style="padding-top:0px !important">Ảnh</div>
-                                            <div class="cart-col col-name">Tên sản phẩm</div>
+                                            <div class="cart-col col-name derepon">Tên sản phẩm</div>
                                             <div class="cart-col col-price">Đơn giá</div>
-                                            <div class="cart-col col-count repon">Số lượng</div>
+                                            <div class="cart-col col-count">Số lượng</div>
                                             <div class="cart-col col-price-total">Giá VNĐ</div>
                                             <div class="cart-col col-check-product repon">Chọn thanh toán</div>
                                             <div class="cart-col col-delete">Xóa</div>
