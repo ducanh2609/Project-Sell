@@ -44,7 +44,9 @@
   }
 
   .content {
-    grid-template-columns: 70% !important;
+    grid-template-columns: 30% 30% 30% !important;
+    gap: 17px 17px !important;
+    padding: 0 !important;
   }
   .header {
     height: 43px !important;
