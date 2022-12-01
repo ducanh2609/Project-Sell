@@ -48,6 +48,16 @@
     gap: 17px 17px !important;
     padding: 0 !important;
   }
+  .computer-items {
+    height: max-content !important;
+    padding-bottom: 10px;
+  }
+  .computer-text{
+    height: max-content !important;
+  }
+  .card-click {
+    display: none;
+  }
   .header {
     height: 43px !important;
   }

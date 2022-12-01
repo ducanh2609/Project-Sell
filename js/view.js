@@ -514,7 +514,7 @@ view.showElement = (id) => {
                                             </div>
                                             <div class="computer-text">${arrComputerName[i]}</div>
                                             <div class="computer-price">${arrComputerPrice[i]}</div>
-                                            <p><div class="computer-cart" id="${counter}"><i class="fa-solid fa-cart-shopping"></i>Thêm vào giỏ hàng</div></p>
+                                            <p><div class="computer-cart" id="${counter}"><i class="fa-solid fa-cart-shopping"></i><span class="card-click">Thêm vào giỏ hàng</span></div></p>
                                         </div>                   
                                         `
                     counter++;
@@ -526,7 +526,7 @@ view.showElement = (id) => {
                                             </div>
                                             <div class="computer-text">${arrComputerName[i]}</div>
                                             <div class="computer-price">${arrComputerPrice[i]}</div>
-                                            <p><div class="computer-cart" id="${counter}"><i class="fa-solid fa-cart-shopping"></i>Thêm vào giỏ hàng</div></p>
+                                            <p><div class="computer-cart" id="${counter}"><i class="fa-solid fa-cart-shopping"></i><span class="card-click">Thêm vào giỏ hàng</span></div></p>
                                         </div>  
                                         `
                     counter++;
@@ -612,7 +612,7 @@ view.showElement = (id) => {
                                                 </div>
                                                 <div class="computer-text">${arrName[k - 1][i]}</div>
                                                 <div class="computer-price">${arrPrice[k - 1][i]}</div>
-                                                <p><div class="computer-cart" id="${counter}"><i class="fa-solid fa-cart-shopping"></i>Thêm vào giỏ hàng</div></p>
+                                                <p><div class="computer-cart" id="${counter}"><i class="fa-solid fa-cart-shopping"></i><span class="card-click">Thêm vào giỏ hàng</span></div></p>
                                             </div>  
                                             `
                     counter++;
