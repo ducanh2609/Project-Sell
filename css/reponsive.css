@@ -42,7 +42,9 @@
   .da-10 {
     width: 100% !important;
   }
-
+  .register-form {
+    scale: 0.5;
+  }
   .content {
     grid-template-columns: 30% 30% 30% !important;
     gap: 17px 17px !important;
@@ -85,7 +87,7 @@
   .holine-box p {
     font-size: 13px !important;
   }
-  .holine-box strong{
+  .holine-box strong {
     font-size: 20px !important;
   }
   footer {
@@ -108,7 +110,7 @@
   }
   .footer2 {
     font-size: 12px !important;
-    padding:10px !important;
+    padding: 10px !important;
     height: 40% !important;
   }
 }
