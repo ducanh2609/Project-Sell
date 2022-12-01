@@ -482,10 +482,10 @@ view.showElement = (id) => {
                 productList.innerHTML += `
                                         <div>
                                             <div class="box">
-                                                <div class="box1" id="link${i}">
+                                                <div class="box1 da-10" id="link${i}">
                                                     <h3><img class="list-icon" src="${listIcons[i]}" alt="">${arrMenuBar[i]}</h3>
                                                 </div>
-                                                <div class="box2">
+                                                <div class="box2 da-0">
                                                 </div>
                                             </div>
                                             <div class="${arrId[i]} content" id="${arrId[i]}"></div>
