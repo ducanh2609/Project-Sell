@@ -103,6 +103,9 @@
     font-size: 10px !important;
     padding: 0 10px 0 0 !important;
   }
+  .footer1 div p {
+    line-height: 17px !important;
+  }
   .footer2 {
     font-size: 12px !important;
     padding:10px !important;
