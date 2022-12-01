@@ -52,7 +52,7 @@
     height: max-content !important;
     padding-bottom: 10px;
   }
-  .computer-text{
+  .computer-text {
     height: max-content !important;
   }
   .card-click {
@@ -73,6 +73,40 @@
     width: 700px !important;
     height: auto !important;
     scale: 0.9 !important;
+  }
+  .holine-box {
+    height: 100px !important;
+    padding: 12px 0 0 0 !important;
+  }
+  .hotline-motal {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .holine-box p {
+    font-size: 13px !important;
+  }
+  .holine-box strong{
+    font-size: 20px !important;
+  }
+  footer {
+    height: 320px !important;
+  }
+  .footer1 {
+    padding: 10px !important;
+    height: 60% !important;
+  }
+  .footer1 p,
+  .footer1 ul {
+    padding: 0 !important;
+  }
+  .footer1 div {
+    font-size: 10px !important;
+    padding: 0 10px 0 0 !important;
+  }
+  .footer2 {
+    font-size: 12px !important;
+    padding:10px !important;
+    height: 40% !important;
   }
 }
 
