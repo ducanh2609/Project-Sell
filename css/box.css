@@ -5,7 +5,7 @@
   height: 60px;
   transform-style: preserve-3d;
   transform: rotateX(-30deg);
-  animation: animate 4s linear infinite;
+  animation: itteimasu 3s alternate-reverse infinite;
   bottom: 70px;
   right: 50px;
   z-index: 600;
@@ -73,12 +73,16 @@
     0 0 80px rgba(0, 255, 0, 1);
 }
 
-@keyframes animate {
+
+@keyframes itteimasu {
   0% {
     transform: rotateX(-30deg) rotateY(0deg);
+    bottom: 70px;
   }
 
   100% {
     transform: rotateX(-30deg) rotateY(360deg);
+    bottom: 200px;
+    scale: 0.1;
   }
 }
