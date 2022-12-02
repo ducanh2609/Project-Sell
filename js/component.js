@@ -86,11 +86,13 @@ component.start = `
                     <li class="li2" id="li2">Giới thiệu</li>
                     <li class="li3" id="li3">Hỗ trợ mua hàng online</li>
                 </ul>
-                <div class="support">
-                    <div class="support-online da-0">
-                        <a href=""><i class="fa-solid fa-headphones"></i> Hỗ trợ trực tuyến</a>
-                    </div>
-                    <div class="cart">
+                <div class="search-smaller" id="smallHeader">
+                    <input id="searchInput"  type="search" placeholder="Nhập từ khóa">
+                    <button id="smallerBut">x</button>
+                    <ion-icon id="searchSmaller" name="search-outline"></ion-icon>
+                </div>
+                <div class="support" id="support">
+                    <div class="cart da-10">
                         <a class="show-card"><i class="fa-solid fa-cart-shopping"></i></a>
                         <div id="card-value">0</div>
                         <p class="show-card">Giỏ hàng</p>
@@ -105,6 +107,7 @@ component.start = `
                 <div class="icon"><a href=""></a></div>
                 <div class="icon"><a href=""></a></div>
             </div>
+            <div class="smaller-search-content" id="smallerSearchContent"></div>
             <div id="acount"></div>
             <div class="body" id="body">
                 <div class="container" id="container">

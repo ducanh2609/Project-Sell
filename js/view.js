@@ -238,6 +238,30 @@ view.setScreenActive = (screenName) => {
                     }
                 }
             })
+            searchSmaller.addEventListener("click", () => {
+                support.style.display = "none";
+                searchInput.style.display = "block";
+                smallHeader.style.width = "100%";
+                searchSmaller.style.display = "none";
+                smallerBut.style.display = "block";
+                smallerSearchContent.style.visibility = "visible";
+            })
+            smallerBut.addEventListener("click", () => {
+                support.style.display = "block";
+                searchInput.style.display = "none";
+                smallHeader.style.width = "10%";
+                searchSmaller.style.display = "block";
+                smallerBut.style.display = "none";
+                smallerSearchContent.style.visibility = "hidden";
+                location.reload();
+            })
+            searchInput.addEventListener("input", () => {
+                if (searchInput.value == "" || searchInput.value == " ") {
+                    smallerSearchContent.innerHTML = "";
+                } else {
+                    model.search(searchInput.value, smallerSearchContent);
+                }
+            })
             break;
         case "carthome":
             document.getElementById("body").innerHTML = component.cartHome;

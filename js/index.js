@@ -78,17 +78,17 @@ window.onload = () => {
             view.setScreenActive("start");
         }
     })
-    window.onbeforeunload = async (e) => {
-        if (e.path[0].closed != true) {
-            setTimeout(()=>{
-                window.onload();
-            },3000)
-            await firebase.firestore()
-                .collection("User")
-                .doc(auth.currentUser.email)
-                .update({
-                    status: "offline"
-                })
-        }
-    }
+    // window.onbeforeunload = async (e) => {
+    //     if (e.path[0].closed != true) {
+    //         setTimeout(()=>{
+    //             window.onload();
+    //         },3000)
+    //         await firebase.firestore()
+    //             .collection("User")
+    //             .doc(auth.currentUser.email)
+    //             .update({
+    //                 status: "offline"
+    //             })
+    //     }
+    // }
 }

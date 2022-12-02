@@ -4,43 +4,52 @@
   }
 
   .da-1 {
-    max-width: 10% !important;
+    width: 10% !important;
   }
 
   .da-2 {
-    max-width: 20% !important;
+    width: 20% !important;
   }
 
   .da-3 {
-    max-width: 30% !important;
+    width: 30% !important;
   }
 
   .da-4 {
-    max-width: 40% !important;
+    width: 40% !important;
   }
 
   .da-5 {
-    max-width: 50% !important;
+    width: 50% !important;
   }
 
   .da-6 {
-    max-width: 60% !important;
+    width: 60% !important;
   }
 
   .da-7 {
-    max-width: 70% !important;
+    width: 70% !important;
   }
 
   .da-8 {
-    max-width: 80% !important;
+    width: 80% !important;
   }
 
   .da-9 {
-    max-width: 90% !important;
+    width: 90% !important;
   }
 
   .da-10 {
     width: 100% !important;
+  }
+  .header {
+    padding-right: 20% !important;
+  }
+  .search-smaller {
+    display: block !important;
+  }
+  .card {
+    padding-top: 10px !important;
   }
   .container {
     width: 100% !important;
@@ -51,6 +60,9 @@
   }
   .box1 h3 {
     font-size: 15px !important;
+  }
+  .admin-contact {
+    top: calc(100vh - 180px) !important;
   }
   .content {
     grid-template-columns: 30% 30% 30% !important;
@@ -98,7 +110,7 @@
   .check-buy {
     scale: 0.8 !important;
   }
-  .col-count input{
+  .col-count input {
     width: 60% !important;
     height: 18% !important;
   }

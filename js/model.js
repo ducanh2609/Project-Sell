@@ -438,7 +438,7 @@ model.getChatSave = async () => {
     }
 }
 
-model.search = async (data) => {
+model.search = async (data, smallerSearchContent) => {
     let response = await firebase.firestore()
         .collection("Product")
         .doc("ComputerList")
@@ -470,7 +470,11 @@ model.search = async (data) => {
             }
         }
     }
-    mainShowSearch.innerHTML = result;
+    if (smallerSearchContent == undefined) {
+        mainShowSearch.innerHTML = result;
+    } else {
+        smallerSearchContent.innerHTML = result;
+    }
     firebase.auth().onAuthStateChanged(async (user) => {
         let flag = false;
         if (user) {
