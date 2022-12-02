@@ -16,6 +16,7 @@
 .inforTable {
   position: relative;
   /* background-color: black; */
+  height: 100%;
   width: 40%;
   border-right: 0.5px solid rgb(57, 56, 56);
   box-sizing: border-box;
@@ -232,6 +233,7 @@ select {
 .boughtNotify {
   width: 60%;
   /* border: 1px solid yellow; */
+  height: 100%;
   box-sizing: border-box;
   padding: 30px;
 }

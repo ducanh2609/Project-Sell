@@ -136,7 +136,32 @@
   .holine-box strong {
     font-size: 20px !important;
   }
-
+  .inforForm {
+    display: block !important;
+    overflow: auto;
+  }
+  .inforTable {
+    width: 100% !important;
+  }
+  
+  .boughtNotify {
+    width: 100% !important;
+    height: max-content !important;
+    overflow: auto;
+  }
+  .boughtNotify-content {
+    padding: 0 !important;
+    min-height: 100px;
+  }
+  .boughtNotify div {
+    font-size: 9px !important;
+  }
+  .product-bought div {
+    height: 100% !important;
+  }
+  .bought-time {
+    line-height: 18px !important;
+  }
   footer {
     height: 320px !important;
   }
