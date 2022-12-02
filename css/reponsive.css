@@ -143,7 +143,7 @@
   .inforTable {
     width: 100% !important;
   }
-  
+
   .boughtNotify {
     width: 100% !important;
     height: max-content !important;
@@ -168,7 +168,9 @@
   .bought-time {
     line-height: 18px !important;
   }
-  
+  .bought-price {
+    line-height: 30px !important;
+  }
   footer {
     height: 320px !important;
   }
