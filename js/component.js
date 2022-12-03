@@ -80,6 +80,14 @@ component.loginPage = `
             </div>
         `
 component.start = `
+            <div class="triangle">
+                <div class="boxAnimation da-0" id="boxAnimation"></div>
+                <div class="boxAnimation da-0" id="boxAnimation1"></div>
+            </div>
+            <div class="triangle">
+                <div class="boxAnimation da-0" id="boxAnimation2"></div>
+                <div class="boxAnimation da-0" id="boxAnimation3"></div>
+            </div>
             <div class="header">
                 <ul class="menu"><h3>Menu</h3>  
                     <li class="li1" id="li1">Trang chủ</li>
@@ -99,8 +107,7 @@ component.start = `
                     </div>
                 </div>
             </div>
-            <div class="boxAnimation da-0" id="boxAnimation"></div>
-            <div class="boxAnimation da-0" id="boxAnimation1"></div>
+            
             <div class="admin-contact">
                 <div class="icon"><a href=""></a></div>
                 <div class="icon"><a href=""></a></div>

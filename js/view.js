@@ -800,6 +800,9 @@ view.changePass = () => {
 view.boxAnimation = () => {
     boxAnimation.innerHTML = component.boxAnimation;
     boxAnimation1.innerHTML = component.boxAnimation;
+    boxAnimation2.innerHTML = component.boxAnimation;
+    boxAnimation3.innerHTML = component.boxAnimation;
+
 }
 view.footer = () => {
     footer.innerHTML = component.footer
