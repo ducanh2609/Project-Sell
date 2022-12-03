@@ -80,11 +80,11 @@ component.loginPage = `
             </div>
         `
 component.start = `
-            <div class="triangle da-1">
+            <div class="triangle da-0">
                 <div class="boxAnimation da-0" id="boxAnimation"></div>
                 <div class="boxAnimation da-0" id="boxAnimation1"></div>
             </div>
-            <div class="triangle da-1">
+            <div class="triangle da-0">
                 <div class="boxAnimation da-0" id="boxAnimation2"></div>
                 <div class="boxAnimation da-0" id="boxAnimation3"></div>
             </div>
