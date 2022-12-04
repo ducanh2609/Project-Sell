@@ -460,11 +460,11 @@ model.search = async (data, smallerSearchContent) => {
                 result += `
                         <div class="computer-items ${productArr[j].Id}">
                             <div>
-                                <img class="computer-img" src="/Image/newold1_img.jpg" alt="">
+                                <img class="computer-img" src="${productArr[j].Img}" alt="">
                             </div>
                             <div class="computer-text">${productArr[j].Name}</div>
                             <div class="computer-price">${productArr[j].Price}</div>
-                            <p><div class="computer-cart" id="${productArr[j].Id}"><i class="fa-solid fa-cart-shopping"></i>Thêm vào giỏ hàng</div></p>
+                            <p><div class="computer-cart" id="${productArr[j].Id}"><i class="fa-solid fa-cart-shopping"></i><span class="card-click">Thêm vào giỏ hàng</span></div></p>
                         </div>                                    
                     `
             }
