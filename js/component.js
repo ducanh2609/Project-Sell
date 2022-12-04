@@ -209,7 +209,7 @@ component.start = `
             </footer>
         `
 component.cartHome = `
-            <div class="container" id="container">
+            <div class="container da-10 da-sm-10" id="container">
                 <div class="header-content">
                     <div id="logo" class="logo da-0"></div>
                     <div class="contact da-10">
