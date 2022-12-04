@@ -229,7 +229,7 @@ component.cartHome = `
                                 <h3>Danh mục sản phẩm</h3>
                             </div>
                         </div>
-                        <div class="extension extension2 da-0 da-sm-0 da-md-0">
+                        <div class="extension extension2 da-0 da-sm-6 da-md-6">
                             <div class="home-page-link">Trang chủ</div>
                             <div>Dịch vụ</div>
                             <div>Tin tức</div>
@@ -237,7 +237,7 @@ component.cartHome = `
                             <div>Phần mềm</div>
                             <div>Liên hệ</div>
                         </div>
-                        <div class="extension extension3 da-0 da-sm-0">
+                        <div class="extension extension3 da-0 da-sm-0 da-md-0">
                             <div class="built">
                                 <i class="fa-solid fa-wrench"></i>
                                 <span>Xây dựng cấu hình</span>
@@ -245,7 +245,7 @@ component.cartHome = `
                         </div>
                     </div>
                     <div class="main-content">
-                        <div class="main-menu1 da-10" id="main-menu1"></div>
+                        <div class="main-menu1 da-10 da-sm-4 da-md-4" id="main-menu1"></div>
                         <div class="preview-product da-10" id="previewProduct"></div>
                         <div class="main-body">
                             <div class="main-body-header">
