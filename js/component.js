@@ -80,13 +80,13 @@ component.loginPage = `
             </div>
         `
 component.start = `
-            <div class="triangle da-0">
-                <div class="boxAnimation da-0" id="boxAnimation"></div>
-                <div class="boxAnimation da-0" id="boxAnimation1"></div>
+            <div class="triangle da-0 da-sm-0 da-md-0 da-lg-0">
+                <div class="boxAnimation" id="boxAnimation"></div>
+                <div class="boxAnimation" id="boxAnimation1"></div>
             </div>
-            <div class="triangle da-0">
-                <div class="boxAnimation da-0" id="boxAnimation2"></div>
-                <div class="boxAnimation da-0" id="boxAnimation3"></div>
+            <div class="triangle da-0 da-sm-0 da-md-0 da-lg-0">
+                <div class="boxAnimation" id="boxAnimation2"></div>
+                <div class="boxAnimation" id="boxAnimation3"></div>
             </div>
             <div class="header">
                 <ul class="menu"><h3>Menu</h3>  
@@ -117,7 +117,7 @@ component.start = `
             <div class="smaller-search-content" id="smallerSearchContent"></div>
             <div id="acount"></div>
             <div class="body" id="body">
-                <div class="container" id="container">
+                <div class="container da-10 da-sm-10" id="container">
                     <div class="header-content">
                         <div class="logo da-0"></div>
                         <div class="contact da-10">
@@ -131,13 +131,13 @@ component.start = `
                     </div>
                     <div class="main" id="main">
                         <div class="main-extension">
-                            <div class="extension extension1 da-10">
+                            <div class="extension extension1 da-10 da-lg-4">
                                 <div class="menu-bar"><i class="fa-sharp fa-solid fa-bars fa-lg"></i></div>
                                 <div class="menu-text">
                                     <h3>Danh mục sản phẩm</h3>
                                 </div>
                             </div>
-                            <div class="extension extension2 da-0 da-sm-0 da-md-0">
+                            <div class="extension extension2 da-0 da-sm-0 da-md-0 da-lg-0">
                                 <div class="home-page-link" >Trang chủ</div>
                                 <div>Dịch vụ</div>
                                 <div>Tin tức</div>
@@ -145,13 +145,13 @@ component.start = `
                                 <div>Phần mềm</div>
                                 <div>Liên hệ</div>
                             </div>
-                            <div class="extension extension3 da-0 da-sm-0">
+                            <div class="extension extension3 da-0 da-sm-0 da-lg-2">
                                 <div class="built">
                                     <i class="fa-solid fa-wrench"></i>
                                     <span>Xây dựng cấu hình</span>
                                 </div>
                             </div>
-                            <div class="extension extension4 da-0">
+                            <div class="extension extension4 da-0 da-lg-3">
                                     <div class="search-icon" id="searchIcon"><i class="fa-solid fa-magnifying-glass fa-lg"></i></div>
                                     <div class="search-content" id="searchContent">
                                         <label for="search">Bạn muốn tìm:</label>
@@ -160,8 +160,8 @@ component.start = `
                             </div>
                         </div>
                         <div class="main-content" id="main-content">
-                            <div class="main-menu da-10" id="main-menu"></div>
-                            <div class="main-show da-0" id="mainShow">
+                            <div class="main-menu da-10 da-lg-4" id="main-menu"></div>
+                            <div class="main-show da-0 da-lg-6" id="mainShow">
                                 <div class="main-picture" id="listImage">
                                     <img id="img" src="/Image/main_picture1.jpg" width="100%" height="100%" alt="error">
                                 </div>

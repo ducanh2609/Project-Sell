@@ -106,7 +106,7 @@
   box-sizing: border-box;
   border-bottom: 270px solid transparent;
   border-top: calc(100vh - 300px) solid transparent;
-  border-right: 50px solid #31a7d6a0;
+  border-right: 50px solid #7ec6e268;
   z-index: 0;
 }
 .triangle::after,
@@ -123,7 +123,7 @@
 }
 
 .triangle::after {
-  border-top: calc(100vh - 300px) solid #3b3d3d;
+  border-top: calc(100vh - 300px) solid #3b3d3d6a;
 }
 .triangle::before {
   border-bottom: 270px solid #8793b1;
@@ -133,7 +133,7 @@
   position: fixed;
   right: 0;
   border-right: none;
-  border-left: 50px solid #31a7d6a0;
+  border-left: 50px solid #7ec6e268;
 }
 .triangle:nth-child(2)::after,
 .triangle:nth-child(2)::before {

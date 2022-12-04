@@ -51,9 +51,6 @@
   .card {
     padding-top: 10px !important;
   }
-  .container {
-    width: 100% !important;
-  }
   .register-form,
   .login-form {
     scale: 0.7 !important;
@@ -292,43 +289,43 @@
   }
 
   .da-md-1 {
-    max-width: 10% !important;
+    width: 10% !important;
   }
 
   .da-md-2 {
-    max-width: 20% !important;
+    width: 20% !important;
   }
 
   .da-md-3 {
-    max-width: 30% !important;
+    width: 30% !important;
   }
 
   .da-md-4 {
-    max-width: 40% !important;
+    width: 40% !important;
   }
 
   .da-md-5 {
-    max-width: 50% !important;
+    width: 50% !important;
   }
 
   .da-md-6 {
-    max-width: 60% !important;
+    width: 60% !important;
   }
 
   .da-md-7 {
-    max-width: 70% !important;
+    width: 70% !important;
   }
 
   .da-md-8 {
-    max-width: 80% !important;
+    width: 80% !important;
   }
 
   .da-md-9 {
-    max-width: 90% !important;
+    width: 90% !important;
   }
 
   .da-md-10 {
-    max-width: 100% !important;
+    width: 100% !important;
   }
 
   .content {
@@ -361,43 +358,43 @@
   }
 
   .da-lg-1 {
-    max-width: 10% !important;
+    width: 10% !important;
   }
 
   .da-lg-2 {
-    max-width: 20% !important;
+    width: 20% !important;
   }
 
   .da-lg-3 {
-    max-width: 30% !important;
+    width: 30% !important;
   }
 
   .da-lg-4 {
-    max-width: 40% !important;
+    width: 40% !important;
   }
 
   .da-lg-5 {
-    max-width: 50% !important;
+    width: 50% !important;
   }
 
   .da-lg-6 {
-    max-width: 60% !important;
+    width: 60% !important;
   }
 
   .da-lg-7 {
-    max-width: 70% !important;
+    width: 70% !important;
   }
 
   .da-lg-8 {
-    max-width: 80% !important;
+    width: 80% !important;
   }
 
   .da-lg-9 {
-    max-width: 90% !important;
+    width: 90% !important;
   }
 
   .da-lg-10 {
-    max-width: 100% !important;
+    width: 100% !important;
   }
 
   .content {
@@ -418,43 +415,43 @@
   }
 
   .da-xl-1 {
-    max-width: 10% !important;
+    width: 10% !important;
   }
 
   .da-xl-2 {
-    max-width: 20% !important;
+    width: 20% !important;
   }
 
   .da-xl-3 {
-    max-width: 30% !important;
+    width: 30% !important;
   }
 
   .da-xl-4 {
-    max-width: 40% !important;
+    width: 40% !important;
   }
 
   .da-xl-5 {
-    max-width: 50% !important;
+    width: 50% !important;
   }
 
   .da-xl-6 {
-    max-width: 60% !important;
+    width: 60% !important;
   }
 
   .da-xl-7 {
-    max-width: 70% !important;
+    width: 70% !important;
   }
 
   .da-xl-8 {
-    max-width: 80% !important;
+    width: 80% !important;
   }
 
   .da-xl-9 {
-    max-width: 90% !important;
+    width: 90% !important;
   }
 
   .da-xl-10 {
-    max-width: 100% !important;
+    width: 100% !important;
   }
   .menu {
     width: 70% !important;
