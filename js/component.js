@@ -89,7 +89,7 @@ component.start = `
                 <div class="boxAnimation" id="boxAnimation3"></div>
             </div>
             <div class="header">
-                <ul class="menu"><h3>Menu</h3>  
+                <ul class="menu da-sm-7 da-md-10 da-lg-7 da-xl-7"><h3>Menu</h3>  
                     <li class="li1" id="li1">Trang chủ</li>
                     <li class="li2" id="li2">Giới thiệu</li>
                     <li class="li3" id="li3">Hỗ trợ mua hàng online</li>
@@ -131,7 +131,7 @@ component.start = `
                     </div>
                     <div class="main" id="main">
                         <div class="main-extension">
-                            <div class="extension extension1 da-10 da-lg-4">
+                            <div class="extension extension1 da-10 da-sm-4 da-md-4 da-lg-4">
                                 <div class="menu-bar"><i class="fa-sharp fa-solid fa-bars fa-lg"></i></div>
                                 <div class="menu-text">
                                     <h3>Danh mục sản phẩm</h3>
@@ -151,7 +151,7 @@ component.start = `
                                     <span>Xây dựng cấu hình</span>
                                 </div>
                             </div>
-                            <div class="extension extension4 da-0 da-lg-3">
+                            <div class="extension extension4 da-0 da-sm-6 da-lg-3">
                                     <div class="search-icon" id="searchIcon"><i class="fa-solid fa-magnifying-glass fa-lg"></i></div>
                                     <div class="search-content" id="searchContent">
                                         <label for="search">Bạn muốn tìm:</label>
@@ -160,7 +160,7 @@ component.start = `
                             </div>
                         </div>
                         <div class="main-content" id="main-content">
-                            <div class="main-menu da-10 da-lg-4" id="main-menu"></div>
+                            <div class="main-menu da-10 da-sm-5 da-md-5 da-lg-4" id="main-menu"></div>
                             <div class="main-show da-0 da-lg-6" id="mainShow">
                                 <div class="main-picture" id="listImage">
                                     <img id="img" src="/Image/main_picture1.jpg" width="100%" height="100%" alt="error">
@@ -179,7 +179,7 @@ component.start = `
                     </div>
                 </div>
             </div>
-            <div id="productList"></div>
+            <div class="da-10 da-sm-10" id="productList"></div>
             <div class="chatbox" id="chatbox"></div>
             <div class="chatListName" id="chatListName">
                 <div class="nameHeader">
@@ -223,7 +223,7 @@ component.cartHome = `
                 </div>
                 <div class="main1" id="main1">
                     <div class="main-extension">
-                        <div class="extension extension1 da-10" id="extension1">
+                        <div class="extension extension1 da-10 da-sm-4 da-md-4" id="extension1">
                             <div class="menu-bar"><i class="fa-sharp fa-solid fa-bars fa-lg"></i></div>
                             <div class="menu-text">
                                 <h3>Danh mục sản phẩm</h3>
