@@ -73,9 +73,9 @@
   .computer-text {
     height: max-content !important;
   }
-  /* .card-click {
+  .card-click {
     display: none;
-  } */
+  }
   .header {
     height: 43px !important;
   }
@@ -186,18 +186,18 @@
     width: 100% !important;
     left: 0 !important;
   }
-  /* .computer-cart {
+  .computer-cart {
     margin: 0 50px !important;
-  } */
+  }
   .preview-product {
     grid-template-columns: 30% 30% 30% !important;
     gap: 17px 17px !important;
     padding: 10px !important;
     font-size: 13px !important;
   }
-  .computer-cart {
+  /* .computer-cart {
     margin: 0 !important;
-  }
+  } */
   .main-menu1 {
     font-size: 14px !important;
   }
