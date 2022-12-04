@@ -187,17 +187,15 @@
     left: 0 !important;
   }
   .computer-cart {
-    margin: 0 50px !important;
+    margin: 0 30px !important;
   }
   .preview-product {
     grid-template-columns: 30% 30% 30% !important;
-    gap: 17px 17px !important;
+    gap: 10px 10px !important;
     padding: 10px !important;
     font-size: 13px !important;
   }
-  /* .computer-cart {
-    margin: 0 !important;
-  } */
+
   .main-menu1 {
     font-size: 14px !important;
   }
