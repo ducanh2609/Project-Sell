@@ -97,6 +97,7 @@ view.setScreenActive = (screenName) => {
             model.pushDataComputer();
             model.admin()
                 .then(([arrId, arrUserName]) => {
+                    console.log(arrId, arrUserName);
                     let userAccountMiss = document.getElementsByClassName("userAccountMiss");
                     let statusUser = document.getElementsByClassName("statusUser");
                     for (let i in arrId) {
@@ -104,7 +105,7 @@ view.setScreenActive = (screenName) => {
                         model.status(arrUserName[i], statusUser[i])
                     }
                 })
-            if (auth.currentUser.email != "ducanh@gmail.com") {
+            if (auth.currentUser != undefined && auth.currentUser.email != "ducanh@gmail.com") {
                 messNotify.addEventListener("click", () => {
                     chatbox.classList.add("chatbox");
                     chatbox.classList.remove("chatboxClose");
@@ -232,6 +233,7 @@ view.setScreenActive = (screenName) => {
                 }
                 // console.log(flag);
                 let computerCart = document.getElementsByClassName("computer-cart");
+                console.log(computerCart);
                 for (let i = 0; i < computerCart.length; i++) {
                     if (flag == true) {
                         model.requesProductQuanlity();
@@ -244,6 +246,7 @@ view.setScreenActive = (screenName) => {
                         })
                     } else {
                         computerCart[i].addEventListener("click", () => {
+                            console.log(111);
                             alert("Bạn phải đăng nhập để mua sản phẩm này");
                             view.setScreenActive("loginPage");
                         })
