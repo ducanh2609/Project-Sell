@@ -758,8 +758,6 @@ model.getMissAdmin = async (email, userAccountMiss, audio) => {
             if (userMess[i].owner == email) {
                 let time = new Date(userMess[i].createdAt);
                 if (lastTime != undefined) {
-                    console.log(time.getTime());
-                    console.log(lastTime);
                     if (time.getTime() > lastTime) {
                         sum += 1;
                         if (audio != undefined) {
