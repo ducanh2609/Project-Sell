@@ -168,7 +168,7 @@ model.productClickded = async () => {
                                 <div class="cart-col col-name">${productArr[j].Name}</div>
                                 <div class="cart-col col-price">${productArr[j].Price}</div>
                                 <div class="cart-col col-count">
-                                    <input class="count"  type="number" value="${clickedArr[i].count}" min="0"></input>
+                                    <input class="count"  type="number" value="${clickedArr[i].count}" min="1"></input>
                                 </div>
                                 <div class="cart-col col-price-total"></div>
                                 <div class="cart-col col-check-product">
@@ -181,8 +181,17 @@ model.productClickded = async () => {
             }
         }
     }
-
     updateCard.innerHTML = newDiv;
+    let checkBuy = document.getElementsByClassName("check-buy");
+    let colPrice = document.getElementsByClassName("col-price");
+    for (let i = 0; i < checkBuy.length; i++) {
+        console.log(colPrice[i + 1].innerHTML);
+
+        if (colPrice[i + 1].innerHTML == "Liên hệ") {
+            console.log(checkBuy[i]);
+            checkBuy[i].disabled = true;
+        }
+    }
     model.eachPrice();
     model.mainPriceTotal();
     model.productQualityChanged();
