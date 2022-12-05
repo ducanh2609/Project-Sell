@@ -104,6 +104,18 @@ view.setScreenActive = (screenName) => {
                         model.status(arrUserName[i], statusUser[i])
                     }
                 })
+            if (auth.currentUser.email != "ducanh@gmail.com") {
+                messNotify.addEventListener("click", () => {
+                    chatbox.classList.add("chatbox");
+                    chatbox.classList.remove("chatboxClose");
+                    chatbox.setAttribute("style", "display:block");
+                    messNotify.style.display = "none";
+                    messNumber.innerHTML = 0;
+                    mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
+                    lastTime = new Date();
+                    localStorage.setItem("lastTime", lastTime.getTime());
+                })
+            }
             chatInput.addEventListener("keydown", async (event) => {
                 if (event.key == "Enter") {
                     if (auth.currentUser.email != "ducanh@gmail.com") {

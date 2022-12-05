@@ -512,12 +512,7 @@ model.admin = async () => {
                 chatListName.setAttribute("style", "display:block");
                 messNotify.style.display = "none";
             })
-            if (messNotify.classList.display == "block") {
-                messNotify.addEventListener("click", () => {
-                    chatListName.setAttribute("style", "display:block");
-                    messNotify.style.display = "none";
-                })
-            }
+            
             let response = await firebase.firestore()
                 .collection("messSave")
                 .get()
@@ -620,6 +615,7 @@ model.admin = async () => {
             }
             return [arrId, arrUserName];
         } else {
+            
             icon[3].addEventListener("click", () => {
                 chatbox.classList.add("chatbox");
                 chatbox.classList.remove("chatboxClose");
@@ -630,12 +626,6 @@ model.admin = async () => {
                 lastTime = new Date();
                 localStorage.setItem("lastTime", lastTime.getTime());
             })
-            if (messNotify.classList.display == "block") {
-                messNotify.addEventListener("click", () => {
-                    chatListName.setAttribute("style", "display:block");
-                    messNotify.style.display = "none";
-                })
-            }
             model.getChatSave();
             boxClose.addEventListener("click", () => {
                 lastTime = new Date();
