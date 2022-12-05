@@ -19,9 +19,9 @@
 }
 .login {
   color: blue;
-  position: relative;
-  margin: 0px auto;
-  top: 50px;
+  position: absolute;
+  top: 7%;
+  left: 38%;
   /* border: 1px solid blue; */
   width: 400px;
   height: 600px;

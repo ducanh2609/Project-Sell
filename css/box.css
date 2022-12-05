@@ -94,7 +94,7 @@
 
   100% {
     transform: rotateX(-30deg) rotateY(360deg);
-    top: 440px;
+    top: 62%;
     scale: 0;
   }
 }

@@ -17,6 +17,7 @@
 }
 
 .login-login {
+  top: 15% !important;
   height: 500px !important;
   padding: 70px !important;
   box-shadow: -20px 10px 30px rgba(10, 35, 226, 0.25),
