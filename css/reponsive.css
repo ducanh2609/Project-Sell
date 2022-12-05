@@ -42,6 +42,12 @@
   .da-10 {
     width: 100% !important;
   }
+  .login {
+    position: relative !important;
+    margin: 0px auto !important;
+    /* top: 15% !important; */
+    left: 3% !important;
+  }
   .header {
     padding-right: 20% !important;
   }
