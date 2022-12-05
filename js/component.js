@@ -359,7 +359,7 @@ component.acount = `
 component.chatbox = `
             <div class="messageBox" id="messageBox">
                 <div class="mesBoxheader" id="mesBoxheader">
-                    <b>Admin</b>
+                    <b id="chatName">Admin</b>
                     <span class="close" id="boxClose"><i class="fa-sharp fa-solid fa-square-xmark fa-lg"></i></span>
                 </div>
                 <div class="mesBoxContent" id="mesBoxContent"></div>

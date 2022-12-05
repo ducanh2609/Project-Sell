@@ -512,7 +512,7 @@ model.admin = async () => {
                 chatListName.setAttribute("style", "display:block");
                 messNotify.style.display = "none";
             })
-            
+
             let response = await firebase.firestore()
                 .collection("messSave")
                 .get()
@@ -566,7 +566,7 @@ model.admin = async () => {
                     currentChatEmail = arrUserName[i].email;
                     chatbox.setAttribute("style", "display:block");
                     mesBoxheader.innerHTML = `
-                                <b>${arrUserName[i].username}</b>
+                                <b id="chatName">${arrUserName[i].username}</b>
                                 <span class="close" id="boxClose"><i class="fa-sharp fa-solid fa-square-xmark fa-lg"></i></span>
                             `
                     chatbox.classList.add("chatbox");
@@ -610,12 +610,12 @@ model.admin = async () => {
                     })
 
                     model.getChatAdmin(username, currentChatEmail);
-                    model.messWaitingAdmin(currentChatEmail);
+                    model.messWaitingAdmin(currentChatEmail, username);
                 })
             }
             return [arrId, arrUserName];
         } else {
-            
+
             icon[3].addEventListener("click", () => {
                 chatbox.classList.add("chatbox");
                 chatbox.classList.remove("chatboxClose");
@@ -642,7 +642,7 @@ model.admin = async () => {
 
 
 // --> Sửa lại với admin
-model.getChatAdmin = async (username, email) => {
+model.getChatAdmin = async (username, email, audio) => {
     let userMess = "";
     let getMessAdmin = await firebase.firestore()
         .collection("AdminMessSave")
@@ -664,8 +664,18 @@ model.getChatAdmin = async (username, email) => {
                     `
         }
     }
-    mesBoxContent.innerHTML = userMess;
-    mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
+    if (chatName.innerHTML == username) {
+        mesBoxContent.innerHTML = userMess;
+        mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
+    } else {
+        let userAccountMiss = document.getElementsByClassName("userAccountMiss");
+        let userAccount = document.getElementsByClassName("userAccount");
+        for (let i = 0; i < userAccountMiss.length; i++) {
+            if (userAccount[i].innerText == username) {
+                model.getMissAdmin(email, userAccountMiss[i], audio);
+            }
+        }
+    }
 }
 // --> Đã sửa xong
 
@@ -686,15 +696,17 @@ model.messWaiting = async (email) => {
             }
         })
 }
-model.messWaitingAdmin = async (email) => {
+model.messWaitingAdmin = async (email, username) => {
     await firebase.firestore()
         .collection("messSave")
         .doc(email)
         .onSnapshot((data) => {
             if (auth.currentUser.email == "ducanh@gmail.com") {
                 if (data.data().messWait != "" && data.data().messWait != undefined) {
-                    mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
-                    messWaiting.setAttribute("style", "display:block")
+                    if (chatName.innerHTML == username) {
+                        mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
+                        messWaiting.setAttribute("style", "display:block")
+                    }
                 } else {
                     messWaiting.setAttribute("style", "display:none")
                 }
@@ -763,8 +775,10 @@ model.getMissAdmin = async (email, userAccountMiss, audio) => {
                     if (time.getTime() > lastTime) {
                         sum += 1;
                         if (audio != undefined) {
-                            if (chatbox.style.display == "none") {
-                                audio.play()
+                            if (chatbox.style.display == "none" || chatName.innerHTML != userName) {
+                                audio.play();
+                                userAccountMiss.innerHTML = sum;
+                                userAccountMiss.style.display = "block";
                             }
                         }
                     }

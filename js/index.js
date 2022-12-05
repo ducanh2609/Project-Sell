@@ -48,8 +48,8 @@ window.onload = () => {
                         .collection("AdminMessSave")
                         .doc(response.docs[i].id)
                         .onSnapshot(async () => {
-                            model.getChatAdmin(userName, response.docs[i].id);
                             let audio = new Audio("/Audio/Nhac-chuong-tin-nhan-Zalo.mp3");
+                            model.getChatAdmin(userName, response.docs[i].id, audio);
                             model.getMissAdmin(response.docs[i].id, userAccountMiss[i], audio);
                         })
                     await firebase.firestore()

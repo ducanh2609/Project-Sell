@@ -97,7 +97,6 @@ view.setScreenActive = (screenName) => {
             model.pushDataComputer();
             model.admin()
                 .then(([arrId, arrUserName]) => {
-                    console.log(arrId, arrUserName);
                     let userAccountMiss = document.getElementsByClassName("userAccountMiss");
                     let statusUser = document.getElementsByClassName("statusUser");
                     for (let i in arrId) {
@@ -233,7 +232,6 @@ view.setScreenActive = (screenName) => {
                 }
                 // console.log(flag);
                 let computerCart = document.getElementsByClassName("computer-cart");
-                console.log(computerCart);
                 for (let i = 0; i < computerCart.length; i++) {
                     if (flag == true) {
                         model.requesProductQuanlity();
@@ -763,19 +761,28 @@ view.showPassword = (password, icon) => {
 }
 view.chatInput = (username, email) => {
     mesBoxContent.innerHTML += `
-                    <div class="currentUser" id="currentUser">
-                        <p>${chatInput.value}</p>
-                    </div>
-                `;
+                <div class="currentUser" id="currentUser">
+                    <p>${chatInput.value}</p>
+                </div>
+            `;
+    mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
     let mess = {
         content: chatInput.value,
         owner: firebase.auth().currentUser.email,
         createdAt: `${new Date()}`,
     };
-    mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
     if (auth.currentUser.email != "ducanh@gmail.com") {
+
         model.chatSave(mess);
     } else {
+        // if (chatName.innerHTML == username) {
+        //     mesBoxContent.innerHTML += `
+        //             <div class="currentUser" id="currentUser">
+        //                 <p>${chatInput.value}</p>
+        //             </div>
+        //         `;
+        //     mesBoxContent.scrollTop = mesBoxContent.scrollHeight;
+        // }
         model.chatSave(mess, username, email);
     }
     chatInput.value = "";
