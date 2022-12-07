@@ -168,7 +168,7 @@ model.productClickded = async () => {
                                 <div class="cart-col col-name">${productArr[j].Name}</div>
                                 <div class="cart-col col-price">${productArr[j].Price}</div>
                                 <div class="cart-col col-count">
-                                    <input class="count"  type="number" value="${clickedArr[i].count}" min="1"></input>
+                                    <input class="count"  type="number" value="${clickedArr[i].count}" min="1" max="99"></input>
                                 </div>
                                 <div class="cart-col col-price-total"></div>
                                 <div class="cart-col col-check-product">
@@ -192,6 +192,30 @@ model.productClickded = async () => {
             checkBuy[i].disabled = true;
         }
     }
+    let count = document.getElementsByClassName("count");
+    console.log(count);
+    for (let i = 0; i < count.length; i++) {
+        count[i].addEventListener("keydown", (e) => {
+            if (e.key == "Enter") {
+                if (count[i].value >= 100) {
+                    count[i].value = 99;
+                }
+                if (count[i].value == "") {
+                    count[i].value = 1;
+                }
+            }
+            model.eachPrice(i);
+        })
+        count[i].addEventListener("focusout", () => {
+            if (count[i].value >= 100) {
+                count[i].value = 99;
+            }
+            if (count[i].value == "") {
+                count[i].value = 1;
+            }
+            model.eachPrice(i);
+        })
+    }
     model.eachPrice();
     model.mainPriceTotal();
     model.productQualityChanged();
@@ -205,20 +229,20 @@ model.eachPrice = (index, sum) => {
     let productCount = document.getElementsByClassName("count");
     let productPrice = document.getElementsByClassName("col-price");
     let Price;
-    let tag;
+    // let tag;
     for (let i = 1; i <= productCount.length; i++) {
         if (productPrice[i].innerHTML != "Liên hệ") {
             Price = Number(productPrice[i].innerHTML.slice(0, -1).replace('.', '').replace('.', ''));
             productPriceTotal[i].innerHTML = `${((Price * Number(productCount[i - 1].value)).toString()).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} đ`;
         } else {
             Price = 0;
-            productPriceTotal[i].innerHTML = "0 đ"
+            productPriceTotal[i].innerHTML = "0 đ";
         }
-        if (index != undefined) {
-            if (i == index) {
-                tag = Price
-            }
-        }
+        // if (index != undefined) {
+        //     if (i == index) {
+        //         tag = Price
+        //     }
+        // }
     }
     if (index != undefined) {
         let checkBuy = document.getElementsByClassName("check-buy");
@@ -238,12 +262,12 @@ model.mainPriceTotal = (index) => {
             checkBuy[i].addEventListener("click", () => {
                 let sum = Number(mainPriceTotal.innerHTML.replace(/\./g, ''));
                 if (checkBuy[i].checked == true) {
-                    let productPriceTotal_1 = Number(productPriceTotal[i + 1].innerHTML.slice(0, -1).replace('.', '').replace('.', ''));
+                    let productPriceTotal_1 = Number(productPriceTotal[i + 1].innerHTML.slice(0, -1).replace(/\./g, ''));
                     sum = Number(sum) + Number(productPriceTotal_1);
                     mainPriceTotal.innerHTML = `${(sum.toString()).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
                 } else {
                     let sum = Number(mainPriceTotal.innerHTML.replace(/\./g, ''));
-                    let productPriceTotal_1 = Number(productPriceTotal[i + 1].innerHTML.slice(0, -1).replace('.', '').replace('.', ''));
+                    let productPriceTotal_1 = Number(productPriceTotal[i + 1].innerHTML.slice(0, -1).replace(/\./g, ''));
                     sum = Number(sum) - Number(productPriceTotal_1);
                     if (sum < 0) {
                         sum = 0;
@@ -256,7 +280,7 @@ model.mainPriceTotal = (index) => {
         let sum = 0;
         for (let i = 0; i < checkBuy.length; i++) {
             if (checkBuy[i].checked == true) {
-                let productPriceTotal_1 = Number(productPriceTotal[i + 1].innerHTML.slice(0, -1).replace('.', '').replace('.', ''));
+                let productPriceTotal_1 = Number(productPriceTotal[i + 1].innerHTML.slice(0, -1).replace(/\./g, ''));
                 console.log(productPriceTotal_1);
                 sum = Number(sum) + Number(productPriceTotal_1);
                 mainPriceTotal.innerHTML = `${(sum.toString()).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;

@@ -204,7 +204,8 @@
 }
 
 .col-count input {
-  width: 30%;
+  min-width: 30%;
+  max-width: 50px;
   height: 30%;
   text-align: center;
 }
