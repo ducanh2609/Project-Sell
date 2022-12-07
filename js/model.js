@@ -185,15 +185,11 @@ model.productClickded = async () => {
     let checkBuy = document.getElementsByClassName("check-buy");
     let colPrice = document.getElementsByClassName("col-price");
     for (let i = 0; i < checkBuy.length; i++) {
-        console.log(colPrice[i + 1].innerHTML);
-
         if (colPrice[i + 1].innerHTML == "Liên hệ") {
-            console.log(checkBuy[i]);
             checkBuy[i].disabled = true;
         }
     }
     let count = document.getElementsByClassName("count");
-    console.log(count);
     for (let i = 0; i < count.length; i++) {
         count[i].addEventListener("keydown", (e) => {
             if (e.key == "Enter") {
